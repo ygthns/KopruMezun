@@ -1,26 +1,32 @@
+import PropTypes from 'prop-types';
 import { motion as Motion, useReducedMotion } from 'framer-motion';
 import { useFadeInUp, useHoverLift } from '../hooks/useMotionPreferences';
 
-const values = [
-  {
-    title: 'Daha G\u00fc\u00e7l\u00fc Ba\u011flar',
-    description: 'Mezun-\u00f6\u011frenci etkile\u015fimini kal\u0131c\u0131 ili\u015fkilere d\u00f6n\u00fc\u015ft\u00fcr\u00fcn.',
+const COPY = {
+  tr: {
+    title: 'Neden KöprüMezun?',
+    description: 'Mezun ve topluluk yönetiminin kritik yapı taşlarını tek platformda, Türkiye sınırları içinde güvenle birleştiriyoruz.',
+    values: [
+      { title: 'Daha Güçlü Bağlar', description: 'Mezun-öğrenci etkileşimini kalıcı ilişkilere dönüştürün.' },
+      { title: 'Ölçeklenebilir Programlar', description: 'Yüzlerce mentorluk eşleşmesini kolayca yönetin.' },
+      { title: 'Veri Türkiye’de', description: 'KVKK odaklı mimari ile veriler yurt içinde saklanır.' },
+      { title: 'Kolay Kurulum', description: 'Saatler içinde markalı portalınız hazır.' },
+    ],
   },
-  {
-    title: '\u00d6l\u00e7eklenebilir Programlar',
-    description: 'Y\u00fczlerce mentorluk e\u015fle\u015fmesini kolayca y\u00f6netin.',
+  en: {
+    title: 'Why KöprüMezun?',
+    description: 'We unite the critical building blocks of alumni and community management on one secure platform within Turkey’s borders.',
+    values: [
+      { title: 'Stronger Connections', description: 'Turn alumni-student engagement into lasting relationships.' },
+      { title: 'Scalable Programs', description: 'Easily manage hundreds of mentorship matches.' },
+      { title: 'Data in Turkey', description: 'Data is hosted domestically with a KVKK-first architecture.' },
+      { title: 'Rapid Launch', description: 'Deploy your branded portal in just a few hours.' },
+    ],
   },
-  {
-    title: 'Veri T\u00fcrkiye\u2019de',
-    description: 'KVKK odakl\u0131 mimari ile veriler yurt i\u00e7inde saklan\u0131r.',
-  },
-  {
-    title: 'Kolay Kurulum',
-    description: 'Saatler i\u00e7inde markal\u0131 portal\u0131n\u0131z haz\u0131r.',
-  },
-];
+};
 
-const WhySection = () => {
+const WhySection = ({ language }) => {
+  const copy = COPY[language];
   const fadeHeading = useFadeInUp();
   const hoverLift = useHoverLift();
   const shouldReduceMotion = useReducedMotion();
@@ -29,13 +35,11 @@ const WhySection = () => {
     <section className="bg-slate-50 py-20 dark:bg-slate-950">
       <div className="mx-auto max-w-6xl px-6">
         <Motion.div className="text-center" {...fadeHeading}>
-          <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl dark:text-white">Neden K\u00f6pr\u00fcMezun?</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 dark:text-slate-300">
-            Mezun ve topluluk y\u00f6netiminin kritik yap\u0131 ta\u015flar\u0131n\u0131 tek platformda, T\u00fcrkiye s\u0131n\u0131rlar\u0131 i\u00e7inde g\u00fcvenle birle\u015ftiriyoruz.
-          </p>
+          <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl dark:text-white">{copy.title}</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 dark:text-slate-300">{copy.description}</p>
         </Motion.div>
         <div className="mt-12 grid gap-6 sm:grid-cols-2">
-          {values.map((value, index) => (
+          {copy.values.map((value, index) => (
             <Motion.div
               key={value.title}
               className="flex h-full flex-col rounded-3xl border border-slate-200 bg-white p-6 text-left shadow-sm transition dark:border-slate-800 dark:bg-slate-900"
@@ -56,6 +60,10 @@ const WhySection = () => {
       </div>
     </section>
   );
+};
+
+WhySection.propTypes = {
+  language: PropTypes.oneOf(['tr', 'en']).isRequired,
 };
 
 export default WhySection;

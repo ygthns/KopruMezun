@@ -1,52 +1,46 @@
+import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { motion as Motion, useReducedMotion } from 'framer-motion';
 import { Plus, Minus } from 'lucide-react';
 import { useFadeInUp } from '../hooks/useMotionPreferences';
 
-const faqs = [
-  {
-    question: 'Bu site ger\u00e7ek \u00fcr\u00fcn m\u00fc?',
-    answer: 'Bu, tan\u0131t\u0131m ama\u00e7l\u0131 demo sayfad\u0131r.',
+const FAQ_COPY = {
+  tr: {
+    title: 'Sık Sorulan Sorular',
+    description: 'Demo sayfamızda öne çıkan başlıklar, ürün vizyonumuzu ve veri egemenliği yaklaşımımızı yansıtır.',
+    items: [
+      { question: 'Bu site gerçek ürün mü?', answer: 'Bu, tanıtım amaçlı demo sayfadır.' },
+      { question: 'Veriler nerede saklanıyor?', answer: 'Türkiye içindeki veri merkezlerinde.' },
+      { question: 'Mentorluk nasıl işler?', answer: 'Profil hedeflerine göre akıllı eşleştirme ve program takibi.' },
+      { question: 'CRM entegrasyonu var mı?', answer: 'Ürün vizyonu içinde evet; bu sayfa demo.' },
+      { question: 'Mobil destek?', answer: 'Tam duyarlı arayüz; mobil uygulama vizyonu.' },
+      { question: 'Güvenlik?', answer: 'RBAC, şifreleme, denetim günlükleri, KVKK odaklı yaklaşım.' },
+      { question: 'Etkinlik & biletleme?', answer: 'Demo akışı, gerçek ödeme yok.' },
+      { question: 'İş ilanları?', answer: 'Pano ve başvuru takibi (temsili).' },
+      { question: 'Oyunlaştırma?', answer: 'Rozet/puan sistemi vizyonu.' },
+      { question: 'Destek?', answer: '“Demo İste” formunu doldurun; sizinle iletişime geçelim.' },
+    ],
   },
-  {
-    question: 'Veriler nerede saklan\u0131yor?',
-    answer: 'T\u00fcrkiye i\u00e7indeki veri merkezlerinde.',
+  en: {
+    title: 'Frequently Asked Questions',
+    description: 'These highlights summarise our product vision and approach to data sovereignty.',
+    items: [
+      { question: 'Is this the real product?', answer: 'This is a promotional demo page.' },
+      { question: 'Where is the data hosted?', answer: 'Within data centres located in Turkey.' },
+      { question: 'How does mentoring work?', answer: 'Smart matching based on profile goals with progress tracking.' },
+      { question: 'Do you support CRM integrations?', answer: 'It is part of the product vision; this page is a demo.' },
+      { question: 'Is there mobile support?', answer: 'A fully responsive interface; native app vision on the roadmap.' },
+      { question: 'What about security?', answer: 'RBAC, encryption, audit logs, and a KVKK-first approach.' },
+      { question: 'Events & ticketing?', answer: 'Demo flow only, no real payments.' },
+      { question: 'Job postings?', answer: 'Representative board and application tracking.' },
+      { question: 'Gamification?', answer: 'Badges and points vision on the roadmap.' },
+      { question: 'Support?', answer: 'Complete the “Request Demo” form and we’ll contact you.' },
+    ],
   },
-  {
-    question: 'Mentorluk nas\u0131l i\u015fler?',
-    answer: 'Profil hedeflerine g\u00f6re ak\u0131ll\u0131 e\u015fle\u015ftirme ve program takibi.',
-  },
-  {
-    question: 'CRM entegrasyonu var m\u0131?',
-    answer: '\u00dcr\u00fcn vizyonu i\u00e7inde evet; bu sayfa demo.',
-  },
-  {
-    question: 'Mobil destek?',
-    answer: 'Tam duyarl\u0131 aray\u00fcz; mobil uygulama vizyonu.',
-  },
-  {
-    question: 'G\u00fcvenlik?',
-    answer: 'RBAC, \u015fifreleme, denetim g\u00fcnl\u00fckleri, KVKK odakl\u0131 yakla\u015f\u0131m.',
-  },
-  {
-    question: 'Etkinlik & biletleme?',
-    answer: 'Demo ak\u0131\u015f\u0131, ger\u00e7ek \u00f6deme yok.',
-  },
-  {
-    question: '\u0130\u015f ilanlar\u0131?',
-    answer: 'Pano ve ba\u015fvuru takibi (temsili).',
-  },
-  {
-    question: 'Oyunla\u015ft\u0131rma?',
-    answer: 'Rozet/puan sistemi vizyonu.',
-  },
-  {
-    question: 'Destek?',
-    answer: '\u201cDemo \u0130ste\u201d formunu doldurun; sizinle ileti\u015fime ge\u00e7elim.',
-  },
-];
+};
 
-const Faq = () => {
+const Faq = ({ language }) => {
+  const copy = FAQ_COPY[language];
   const [openIndex, setOpenIndex] = useState(0);
   const fadeHeading = useFadeInUp();
   const shouldReduceMotion = useReducedMotion();
@@ -59,17 +53,15 @@ const Faq = () => {
     <section id="sss" className="bg-slate-50 py-24 dark:bg-slate-950">
       <div className="mx-auto max-w-5xl px-6">
         <Motion.div className="text-center" {...fadeHeading}>
-          <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl dark:text-white">S\u0131k Sorulan Sorular</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 dark:text-slate-300">
-            Demo sayfam\u0131zda \u00f6ne \u00e7\u0131kan ba\u015fl\u0131klar, \u00fcr\u00fcn vizyonumuzu ve veri egemenli\u011fi yakla\u015f\u0131m\u0131m\u0131z\u0131 yans\u0131t\u0131r.
-          </p>
+          <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl dark:text-white">{copy.title}</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 dark:text-slate-300">{copy.description}</p>
         </Motion.div>
         <div className="mt-10 space-y-4">
-          {faqs.map((faq, index) => {
+          {copy.items.map((faq, index) => {
             const isOpen = index === openIndex;
             return (
               <Motion.div
-                key={faq.question}
+                key={`${faq.question}-${language}`}
                 className="overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm dark:border-slate-800 dark:bg-slate-900"
                 initial={shouldReduceMotion ? undefined : { opacity: 0, y: 18 }}
                 whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -105,6 +97,10 @@ const Faq = () => {
       </div>
     </section>
   );
+};
+
+Faq.propTypes = {
+  language: PropTypes.oneOf(['tr', 'en']).isRequired,
 };
 
 export default Faq;

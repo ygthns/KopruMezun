@@ -3,25 +3,59 @@ import { motion as Motion, useReducedMotion } from 'framer-motion';
 import { Play, Users, Goal, BarChart3 } from 'lucide-react';
 import { useFadeInUp, useHoverLift } from '../hooks/useMotionPreferences';
 
-const steps = [
-  {
-    title: 'Toplulu\u011fu Kurun',
-    description: 'Markal\u0131 portal\u0131n\u0131z\u0131 haz\u0131rlay\u0131n, mevcut verinizi g\u00fcvenle aktar\u0131n.',
-    icon: Users,
+const COPY = {
+  tr: {
+    title: 'Platform Turunu İzleyin',
+    description:
+      'Demoda; mezun profil deneyimini, mentorluk akışlarının nasıl yapılandırıldığını ve veri egemenliği kontrollerini adım adım gösteriyoruz.',
+    button: 'Canlı Demo İste',
+    note: 'Formu doldurun, 24 saat içinde size dönüş yapalım.',
+    steps: [
+      {
+        title: 'Topluluğu Kurun',
+        description: 'Markalı portalınızı hazırlayın, mevcut verinizi güvenle aktarın.',
+        icon: Users,
+      },
+      {
+        title: 'Mentorluğu Başlatın',
+        description: 'Akıllı eşleştirme ile mentorluk akışlarını dakikalar içinde oluşturun.',
+        icon: Goal,
+      },
+      {
+        title: 'Etkileşimi Ölçün',
+        description: 'Kampanya ve program performansını gerçek zamanlı analiz edin.',
+        icon: BarChart3,
+      },
+    ],
   },
-  {
-    title: 'Mentorlu\u011fu Ba\u015flat\u0131n',
-    description: 'Ak\u0131ll\u0131 e\u015fle\u015ftirme ile mentorluk ak\u0131\u015flar\u0131n\u0131 dakikalar i\u00e7inde olu\u015fturun.',
-    icon: Goal,
+  en: {
+    title: 'Watch the Product Tour',
+    description:
+      'See how alumni profiles, mentoring flows, and data-sovereignty controls come together step by step in our guided demo.',
+    button: 'Request Live Demo',
+    note: 'Submit the form and we will reach out within 24 hours.',
+    steps: [
+      {
+        title: 'Launch Your Community',
+        description: 'Prepare your branded portal and migrate existing data securely.',
+        icon: Users,
+      },
+      {
+        title: 'Kick-start Mentoring',
+        description: 'Build mentoring flows in minutes with intelligent matching.',
+        icon: Goal,
+      },
+      {
+        title: 'Measure Engagement',
+        description: 'Track programme and campaign performance in real time.',
+        icon: BarChart3,
+      },
+    ],
   },
-  {
-    title: 'Etkile\u015fimi \u00d6l\u00e7\u00fcn',
-    description: 'Kampanya ve program performans\u0131n\u0131 ger\u00e7ek zamanl\u0131 analiz edin.',
-    icon: BarChart3,
-  },
-];
+};
 
-const DemoSection = ({ onDemoClick }) => {
+const DemoSection = ({ language, onDemoClick }) => {
+  const copy = COPY[language];
   const fadeHeading = useFadeInUp();
   const shouldReduceMotion = useReducedMotion();
   const hoverLift = useHoverLift();
@@ -36,26 +70,24 @@ const DemoSection = ({ onDemoClick }) => {
               <div className="flex h-20 w-20 items-center justify-center rounded-full bg-indigo-600 text-white shadow-lg">
                 <Play className="h-10 w-10" aria-hidden="true" />
               </div>
-              <h3 className="text-2xl font-semibold text-slate-900 dark:text-white">Platform Turunu \u0130zleyin</h3>
-              <p className="max-w-md text-sm text-slate-600 dark:text-slate-300">
-                Demoda; mezun profil deneyimini, mentorluk ak\u0131\u015flar\u0131n\u0131n nas\u0131l yap\u0131land\u0131r\u0131ld\u0131\u011f\u0131n\u0131 ve veri egemenli\u011fi kontrollerini ad\u0131m ad\u0131m g\u00f6steriyoruz.
-              </p>
+              <h3 className="text-2xl font-semibold text-slate-900 dark:text-white">{copy.title}</h3>
+              <p className="max-w-md text-sm text-slate-600 dark:text-slate-300">{copy.description}</p>
               <button
                 type="button"
                 onClick={onDemoClick}
                 className="inline-flex items-center justify-center gap-2 rounded-full bg-indigo-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
               >
-                Canl\u0131 Demo \u0130ste
+                {copy.button}
               </button>
-              <p className="text-xs text-slate-500 dark:text-slate-400">Formu doldurun, 24 saat i\u00e7inde size d\u00f6n\u00fc\u015f yapal\u0131m.</p>
+              <p className="text-xs text-slate-500 dark:text-slate-400">{copy.note}</p>
             </div>
           </div>
           <div className="flex flex-col justify-center gap-4">
-            {steps.map((step, index) => {
+            {copy.steps.map((step, index) => {
               const Icon = step.icon;
               return (
                 <Motion.div
-                  key={step.title}
+                  key={`${step.title}-${language}`}
                   className="flex items-start gap-4 rounded-3xl border border-slate-200 bg-white p-5 shadow-sm dark:border-slate-800 dark:bg-slate-900"
                   initial={shouldReduceMotion ? undefined : { opacity: 0, x: 40 }}
                   whileInView={shouldReduceMotion ? undefined : { opacity: 1, x: 0 }}
@@ -81,6 +113,7 @@ const DemoSection = ({ onDemoClick }) => {
 };
 
 DemoSection.propTypes = {
+  language: PropTypes.oneOf(['tr', 'en']).isRequired,
   onDemoClick: PropTypes.func.isRequired,
 };
 

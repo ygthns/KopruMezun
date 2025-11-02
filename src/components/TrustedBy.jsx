@@ -1,18 +1,24 @@
+import PropTypes from 'prop-types';
 import { motion as Motion, useReducedMotion } from 'framer-motion';
 import { useFadeInUp, useHoverLift } from '../hooks/useMotionPreferences';
 
+const HEADING = {
+  tr: 'KöprüMezun’a güvenen kurumlar',
+  en: 'Organisations that trust KöprüMezun',
+};
+
 const logos = [
-  { name: 'Anadolu \u00fcniversitesi', file: 'logo1.svg' },
-  { name: 'EGE Vakf\u0131', file: 'logo2.svg' },
+  { name: 'Anadolu Üniversitesi', file: 'logo1.svg' },
+  { name: 'EGE Vakfı', file: 'logo2.svg' },
   { name: 'Bosphorus Alumni', file: 'logo3.svg' },
   { name: 'Anka Holding', file: 'logo4.svg' },
-  { name: 'Mimarlar Derne\u011fi', file: 'logo5.svg' },
+  { name: 'Mimarlar Derneği', file: 'logo5.svg' },
   { name: 'Yeni Nesil STK', file: 'logo6.svg' },
-  { name: 'Teknokent Mezunlar\u0131', file: 'logo7.svg' },
-  { name: 'K\u00fclt\u00fcr Koleji', file: 'logo8.svg' },
+  { name: 'Teknokent Mezunları', file: 'logo7.svg' },
+  { name: 'Kültür Koleji', file: 'logo8.svg' },
 ];
 
-const TrustedBy = () => {
+const TrustedBy = ({ language }) => {
   const fadeIn = useFadeInUp();
   const hoverLift = useHoverLift();
   const shouldReduceMotion = useReducedMotion();
@@ -21,7 +27,7 @@ const TrustedBy = () => {
     <section className="bg-white py-16 dark:bg-slate-950">
       <div className="mx-auto max-w-6xl px-6 text-center">
         <Motion.h2 className="text-sm font-semibold uppercase tracking-[0.3em] text-slate-500 dark:text-slate-400" {...fadeIn}>
-          K\u00f6pr\u00fcMezun\u2019a g\u00fcvenen kurumlar
+          {HEADING[language]}
         </Motion.h2>
         <div className="mt-10 grid grid-cols-2 gap-6 sm:grid-cols-4 lg:grid-cols-8">
           {logos.map((logo, index) => (
@@ -46,6 +52,10 @@ const TrustedBy = () => {
       </div>
     </section>
   );
+};
+
+TrustedBy.propTypes = {
+  language: PropTypes.oneOf(['tr', 'en']).isRequired,
 };
 
 export default TrustedBy;

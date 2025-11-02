@@ -28,12 +28,13 @@ npm run preview
 
 ## Icerik ve Ozellikler
 
-- Tum metinler Turkce ve KVKK/yerel barindirma vurgusu on planda.
+- Tum metinler Turkce ve Ingilizce olarak hazirlandi; dil secimi sayfa uzerinden yapilabilir.
+- Tum Turkce icerikler gercek karakterler (UTF-8) ile dosyalara yazilmistir; unicode kacislari kullanilmamistir.
 - Tailwind ile light/dark mod destegi; Framer Motion ile erisilebilir animasyonlar.
-- `Demo Ist`e modal'i gercek gonderim yapmadan tesekkur mesaji gosterir.
+- `Demo Iste` modal'i gercek gonderim yapmadan tesekkur mesaji gosterir.
 - `public/` klasorunde PDF brosur, logo placeholders, sitemap ve robots dosyalari bulunur.
 
 ## Komutlar
 
-- `npm run lint` tanimli degildir; istege gore ekleyebilirsiniz.
+- `npm run lint` proje icin ESLint calistirir.
 - Tasarim ve icerik tamamen tanitim amaclidir, gercek urunle baglantili degildir.

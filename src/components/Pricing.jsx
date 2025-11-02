@@ -3,31 +3,69 @@ import { motion as Motion, useReducedMotion } from 'framer-motion';
 import { CheckCircle2, Sparkles } from 'lucide-react';
 import { useFadeInUp, useHoverLift } from '../hooks/useMotionPreferences';
 
-const tiers = [
-  {
-    name: 'Ba\u015flang\u0131\u00e7',
-    price: 'Temel paket',
-    description: 'Topluluk temelleri, \u00fcye dizini, b\u00fclten.',
-    features: ['Branded topluluk portal\u0131', '\u00dcye dizini & temel analitik', 'B\u00fclten ve duyuru ara\u00e7lar\u0131'],
-    highlighted: false,
+const COPY = {
+  tr: {
+    title: 'Kurum ölçeğinize göre esnek planlar',
+    subtitle: 'Bu fiyatlandırma demo amaçlıdır; tüm içerik temsili. Net teklif için ekibimizle iletişime geçin.',
+    plans: [
+      {
+        name: 'Başlangıç',
+        price: 'Temel paket',
+        description: 'Topluluk temelleri, üye dizini, bülten.',
+        features: ['Branded topluluk portalı', 'Üye dizini & temel analitik', 'Bülten ve duyuru araçları'],
+        highlighted: false,
+      },
+      {
+        name: 'Büyüme',
+        price: 'Öne çıkan paket',
+        description: 'Mentorluk + etkinlikler + temel otomasyon.',
+        features: ['Mentorluk program yönetimi', 'Etkinlik & biletleme modülü', 'Otomatik mail akışları'],
+        highlighted: true,
+      },
+      {
+        name: 'Kurumsal',
+        price: 'Gelişmiş paket',
+        description: 'SSO + gelişmiş analitik + premium destek.',
+        features: ['Kurumsal SSO & güvenlik katmanları', 'Gelişmiş raporlama ve API erişimi', 'Öncelikli destek & eğitim'],
+        highlighted: false,
+      },
+    ],
+    recommended: 'Önerilen',
+    cta: 'Demo Talep Et',
   },
-  {
-    name: 'B\u00fcy\u00fce',
-    price: '\u00d6ne \u00e7\u0131kan paket',
-    description: 'Mentorluk + etkinlikler + temel otomasyon.',
-    features: ['Mentorluk program y\u00f6netimi', 'Etkinlik & biletleme mod\u00fcl\u00fc', 'Otomatik mail ak\u0131\u015flar\u0131'],
-    highlighted: true,
+  en: {
+    title: 'Flexible plans for every organisation',
+    subtitle: 'Pricing is illustrative for demo purposes; all content is representative. Contact our team for a tailored quote.',
+    plans: [
+      {
+        name: 'Launch',
+        price: 'Essential package',
+        description: 'Community foundations, member directory, newsletters.',
+        features: ['Branded community portal', 'Member directory & essential analytics', 'Newsletter and announcement tools'],
+        highlighted: false,
+      },
+      {
+        name: 'Growth',
+        price: 'Featured package',
+        description: 'Mentoring + events + core automation.',
+        features: ['Mentoring programme management', 'Event & ticketing module', 'Automated email workflows'],
+        highlighted: true,
+      },
+      {
+        name: 'Enterprise',
+        price: 'Advanced package',
+        description: 'SSO + advanced analytics + premium support.',
+        features: ['Enterprise SSO & security layers', 'Advanced reporting and API access', 'Priority support & training'],
+        highlighted: false,
+      },
+    ],
+    recommended: 'Recommended',
+    cta: 'Request Demo',
   },
-  {
-    name: 'Kurumsal',
-    price: 'Geli\u015fmi\u015f paket',
-    description: 'SSO + geli\u015fmi\u015f analitik + premium destek.',
-    features: ['Kurumsal SSO & g\u00fcvenlik katmanlar\u0131', 'Geli\u015fmi\u015f raporlama ve API eri\u015fimi', '\u00d6ncelikli destek & e\u011fitim'],
-    highlighted: false,
-  },
-];
+};
 
-const Pricing = ({ onDemoClick }) => {
+const Pricing = ({ language, onDemoClick }) => {
+  const copy = COPY[language];
   const fadeHeading = useFadeInUp();
   const hoverLift = useHoverLift();
   const shouldReduceMotion = useReducedMotion();
@@ -36,15 +74,13 @@ const Pricing = ({ onDemoClick }) => {
     <section id="fiyatlandirma" className="bg-white py-24 dark:bg-slate-950">
       <div className="mx-auto max-w-6xl px-6">
         <Motion.div className="text-center" {...fadeHeading}>
-          <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl dark:text-white">Kurum \u00f6l\u00e7e\u011finize g\u00f6re esnek planlar</h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 dark:text-slate-300">
-            Bu fiyatland\u0131rma demo ama\u00e7l\u0131d\u0131r; t\u00fcm i\u00e7erik temsili. Net teklif i\u00e7in ekibimizle ileti\u015fime ge\u00e7in.
-          </p>
+          <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl dark:text-white">{copy.title}</h2>
+          <p className="mx-auto mt-4 max-w-2xl text-base text-slate-600 dark:text-slate-300">{copy.subtitle}</p>
         </Motion.div>
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {tiers.map((tier, index) => (
+          {copy.plans.map((tier, index) => (
             <Motion.div
-              key={tier.name}
+              key={`${tier.name}-${language}`}
               className={`flex h-full flex-col rounded-3xl border p-8 text-left shadow-sm transition dark:border-slate-800 dark:bg-slate-900 ${
                 tier.highlighted ? 'border-indigo-200 bg-indigo-50/70 dark:border-indigo-500/40 dark:bg-indigo-500/10' : 'border-slate-200 bg-white'
               }`}
@@ -62,7 +98,7 @@ const Pricing = ({ onDemoClick }) => {
                 {tier.highlighted && (
                   <span className="inline-flex items-center gap-2 rounded-full bg-indigo-600/10 px-3 py-1 text-xs font-semibold uppercase text-indigo-600 dark:bg-indigo-500/20 dark:text-indigo-300">
                     <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
-                    \u00d6nerilen
+                    {copy.recommended}
                   </span>
                 )}
               </div>
@@ -80,7 +116,7 @@ const Pricing = ({ onDemoClick }) => {
                 onClick={onDemoClick}
                 className="mt-auto inline-flex items-center justify-center rounded-full bg-slate-900 px-5 py-3 text-sm font-semibold text-white transition hover:bg-indigo-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 dark:bg-indigo-600 dark:hover:bg-indigo-500"
               >
-                Demo Talep Et
+                {copy.cta}
               </button>
             </Motion.div>
           ))}
@@ -91,6 +127,7 @@ const Pricing = ({ onDemoClick }) => {
 };
 
 Pricing.propTypes = {
+  language: PropTypes.oneOf(['tr', 'en']).isRequired,
   onDemoClick: PropTypes.func.isRequired,
 };
 

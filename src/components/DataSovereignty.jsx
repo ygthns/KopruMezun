@@ -1,8 +1,31 @@
+import PropTypes from 'prop-types';
 import { motion as Motion } from 'framer-motion';
 import { Shield } from 'lucide-react';
 import { useFadeInUp } from '../hooks/useMotionPreferences';
 
-const DataSovereignty = () => {
+const COPY = {
+  tr: {
+    tag: 'KVKK Uyumlu',
+    heading: 'Veri Türkiye’de Kalır',
+    description:
+      'KöprüMezun, Türkiye’deki güvenli veri merkezlerinde barındırılır. KVKK’ya uyumlu süreçler, şifreleme ve rol-tabanlı erişim ile verileriniz ülke sınırları içinde kalır.',
+    badgeTitle: 'Türkiye lokasyonu',
+    badgeSubtitle: 'Ankara & İstanbul veri merkezleri',
+    badgeFooter: 'KVKK’ye saygı',
+  },
+  en: {
+    tag: 'KVKK Compliant',
+    heading: 'Data Stays in Turkey',
+    description:
+      'KöprüMezun is hosted in secure data centres located in Turkey. KVKK-aligned processes, encryption, and role-based access ensure your data remains within national borders.',
+    badgeTitle: 'Hosted in Turkey',
+    badgeSubtitle: 'Istanbul & Ankara data centres',
+    badgeFooter: 'Respecting KVKK',
+  },
+};
+
+const DataSovereignty = ({ language }) => {
+  const copy = COPY[language];
   const fade = useFadeInUp();
 
   return (
@@ -13,20 +36,17 @@ const DataSovereignty = () => {
           <div className="flex flex-col items-start gap-6 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-1 text-xs font-semibold uppercase tracking-[0.3em] text-white/60">
-                KVKK Uyumlu
+                {copy.tag}
               </span>
-              <h2 className="mt-6 text-3xl font-semibold sm:text-4xl">Veri T\u00fcrkiye\u2019de Kal\u0131r</h2>
-              <p className="mt-4 text-base text-white/80">
-                K\u00f6pr\u00fcMezun, T\u00fcrkiye\u2019deki g\u00fcvenli veri merkezlerinde bar\u0131nd\u0131r\u0131l\u0131r. KVKK\u2019ya uyumlu s\u00fcre\u00e7ler, \u015fifreleme ve rol-tabanl\u0131 eri\u015fim ile verileriniz \u00fclke s\u0131n\u0131rlar\u0131 i\u00e7inde
-                kal\u0131r.
-              </p>
+              <h2 className="mt-6 text-3xl font-semibold sm:text-4xl">{copy.heading}</h2>
+              <p className="mt-4 text-base text-white/80">{copy.description}</p>
             </div>
             <div className="flex items-center gap-4 rounded-3xl border border-white/15 bg-white/10 p-6 text-left">
               <Shield className="h-10 w-10 text-cyan-400" aria-hidden="true" />
               <div className="text-sm text-white/80">
-                <p className="font-semibold">T\u00fcrkiye lokasyonu</p>
-                <p>Ankara & \u0130stanbul veri merkezleri</p>
-                <p className="mt-2 text-xs uppercase tracking-[0.2em] text-white/60">KVKK\u2019ye sayg\u0131</p>
+                <p className="font-semibold">{copy.badgeTitle}</p>
+                <p>{copy.badgeSubtitle}</p>
+                <p className="mt-2 text-xs uppercase tracking-[0.2em] text-white/60">{copy.badgeFooter}</p>
               </div>
             </div>
           </div>
@@ -34,6 +54,10 @@ const DataSovereignty = () => {
       </div>
     </section>
   );
+};
+
+DataSovereignty.propTypes = {
+  language: PropTypes.oneOf(['tr', 'en']).isRequired,
 };
 
 export default DataSovereignty;

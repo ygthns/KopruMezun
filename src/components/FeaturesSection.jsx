@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { motion as Motion, useReducedMotion } from 'framer-motion';
 import {
   Palette,
@@ -19,105 +20,215 @@ import {
 } from 'lucide-react';
 import { useFadeInUp, useHoverLift } from '../hooks/useMotionPreferences';
 
-const features = [
-  {
-    title: 'Branded Topluluk & Profil',
+const COPY = {
+  tr: {
+    title: 'KöprüMezun, alumni/topluluk yönetiminin tüm yapı taşlarını tek çatı altında sunar.',
     description:
-      'Kurum renkleri, \u00f6zel alan ad\u0131n\u0131z, \u00f6zelle\u015ftirilebilir tema; kapsam\u0131l\u0131 profil alanlar\u0131; sosyal giri\u015f.',
-    icon: Palette,
+      'Kurumsal ölçekteki mezun ve topluluk programlarınızı uçtan uca yönetmeniz, ölçmeniz ve güçlendirmeniz için tasarlandı.',
+    features: [
+      {
+        title: 'Branded Topluluk & Profil',
+        description:
+          'Kurum renkleri, özel alan adınız, özelleştirilebilir tema; kapsamlı profil alanları; sosyal giriş.',
+        icon: Palette,
+      },
+      {
+        title: 'Üye Dizin & Harita',
+        description:
+          'Akıllı arama (bölge, sektör, beceri, mezuniyet yılı), harita görünümü, şirket/işletme dizini.',
+        icon: Map,
+      },
+      {
+        title: 'Gruplar & Alt Topluluklar',
+        description:
+          'Sınıf yılları, şehir kulüpleri, ilgi alanları; premium grup özellikleri.',
+        icon: Users,
+      },
+      {
+        title: 'Akış & İletişim',
+        description:
+          'Haber akışı, gönderi/yorum/beğeni; 1:1 mesajlaşma; bildirimler.',
+        icon: MessageCircle,
+      },
+      {
+        title: 'Mentorluk',
+        description:
+          '1:1, grup ve flash mentorluk; akıllı eşleştirme; program panoları; hedefler ve geri bildirim.',
+        icon: Handshake,
+      },
+      {
+        title: 'Kariyer & İş Panosu',
+        description:
+          'İş/staj ilanları, başvuru/öneri takibi, kurum ortaklıkları.',
+        icon: Briefcase,
+      },
+      {
+        title: 'Etkinlikler',
+        description:
+          'Sanal/fiziksel etkinlik oluşturma, biletleme/RSVP, takvim entegrasyonu, hatırlatıcılar, geri bildirim.',
+        icon: Calendar,
+      },
+      {
+        title: 'Bağış & Kampanyalar',
+        description:
+          'Gömülü bağış formları, bağış günleri, crowdfunding, bağış analitiği; CRM senkronizasyonu.',
+        icon: HeartHandshake,
+      },
+      {
+        title: 'İletişim & Otomasyon',
+        description:
+          'Bülten, haftalık özet, segmentlere özel hedefli gönderimler, kişiselleştirilmiş video mesajlar.',
+        icon: Mail,
+      },
+      {
+        title: 'Analitik & Raporlama',
+        description:
+          'Aktif kullanıcı, geri dönüş oranı, mentorluk ilişkileri, etkinlik katılımı, iş panosu metrikleri; CASE metrikleri uyumu.',
+        icon: BarChart3,
+      },
+      {
+        title: 'Entegrasyon & API',
+        description:
+          'CRM (Salesforce/RE NXT), ödeme ağ geçitleri, SSO, takvim; REST API/Webhook (tanıtım amaçlı).',
+        icon: Cable,
+      },
+      {
+        title: 'Güvenlik & Yetkiler',
+        description:
+          'Rol tabanlı erişim, içerik moderasyonu, denetim günlükleri, gizlilik kontrolleri.',
+        icon: ShieldCheck,
+      },
+      {
+        title: 'Mobil & Duyarlı Tasarım',
+        description:
+          'Tam duyarlı arayüz, mobil odaklı deneyim, push bildirim vizyonu.',
+        icon: Smartphone,
+      },
+      {
+        title: 'Özelleştirme',
+        description:
+          'Tema/renkler, özel profil alanları, özel formlar ve e-posta şablonları, çok dilli altyapı.',
+        icon: Settings,
+      },
+      {
+        title: 'Gönüllülük & Pazar Yeri',
+        description:
+          'Gönüllü eşleştirme ve saat takibi; mezun işletmeleri dizini.',
+        icon: Heart,
+      },
+      {
+        title: 'Oyunlaştırma',
+        description: 'Rozetler, görevler, liderlik tabloları.',
+        icon: Trophy,
+      },
+    ],
   },
-  {
-    title: '\u00dcye Dizin & Harita',
+  en: {
+    title: 'KöprüMezun brings every pillar of alumni and community management together.',
     description:
-      'Ak\u0131ll\u0131 arama (b\u00f6lge, sekt\u00f6r, beceri, mezuniyet y\u0131l\u0131), harita g\u00f6r\u00fcn\u00fcm\u00fc, \u015firket/i\u015fletme dizini.',
-    icon: Map,
+      'Designed to help you run, measure, and strengthen enterprise-scale alumni and community programs end to end.',
+    features: [
+      {
+        title: 'Branded Community & Profile',
+        description:
+          'Institutional colours, custom domain, configurable themes; rich profile fields; social sign-in.',
+        icon: Palette,
+      },
+      {
+        title: 'Member Directory & Map',
+        description:
+          'Smart search by location, industry, skill, graduation year; map view; company/business listings.',
+        icon: Map,
+      },
+      {
+        title: 'Groups & Sub-communities',
+        description:
+          'Class years, city chapters, interest hubs; premium group capabilities.',
+        icon: Users,
+      },
+      {
+        title: 'Feed & Communications',
+        description:
+          'News feed, posts/comments/reactions; 1:1 messaging; notifications.',
+        icon: MessageCircle,
+      },
+      {
+        title: 'Mentoring',
+        description:
+          '1:1, group, and flash mentoring; intelligent matching; programme dashboards; goal tracking and feedback.',
+        icon: Handshake,
+      },
+      {
+        title: 'Career & Job Board',
+        description:
+          'Job/internship postings, application and referral tracking, employer partnerships.',
+        icon: Briefcase,
+      },
+      {
+        title: 'Events',
+        description:
+          'Create virtual and in-person events, ticketing/RSVP, calendar integrations, reminders, feedback.',
+        icon: Calendar,
+      },
+      {
+        title: 'Giving & Campaigns',
+        description:
+          'Embedded donation forms, giving days, crowdfunding, donation analytics; CRM synchronisation.',
+        icon: HeartHandshake,
+      },
+      {
+        title: 'Communications & Automation',
+        description:
+          'Newsletters, weekly digests, segmented targeting, personalised video updates.',
+        icon: Mail,
+      },
+      {
+        title: 'Analytics & Reporting',
+        description:
+          'Active members, return rates, mentoring relationships, event participation, job board metrics; CASE-aligned KPIs.',
+        icon: BarChart3,
+      },
+      {
+        title: 'Integrations & API',
+        description:
+          'CRM (Salesforce/RE NXT), payment gateways, SSO, calendar; REST API / webhook (for roadmap previews).',
+        icon: Cable,
+      },
+      {
+        title: 'Security & Permissions',
+        description:
+          'Role-based access, content moderation, audit logs, granular privacy controls.',
+        icon: ShieldCheck,
+      },
+      {
+        title: 'Mobile & Responsive Design',
+        description:
+          'Fully responsive interface, mobile-first journeys, push notification roadmap.',
+        icon: Smartphone,
+      },
+      {
+        title: 'Customisation',
+        description:
+          'Themes/colours, custom profile fields, tailored forms and email templates, multilingual foundations.',
+        icon: Settings,
+      },
+      {
+        title: 'Volunteering & Marketplace',
+        description:
+          'Volunteer matching and hour tracking; alumni business directory.',
+        icon: Heart,
+      },
+      {
+        title: 'Gamification',
+        description: 'Badges, challenges, leaderboards.',
+        icon: Trophy,
+      },
+    ],
   },
-  {
-    title: 'Gruplar & Alt Topluluklar',
-    description:
-      'S\u0131n\u0131f y\u0131llar\u0131, \u015fehir kul\u00fcpleri, ilgi alanlar\u0131; premium grup \u00f6zellikleri.',
-    icon: Users,
-  },
-  {
-    title: 'Ak\u0131\u015f & \u0130leti\u015fim',
-    description:
-      'Haber ak\u0131\u015f\u0131, g\u00f6nderi/yorum/be\u011feni; 1:1 mesajla\u015fma; bildirimler.',
-    icon: MessageCircle,
-  },
-  {
-    title: 'Mentorluk',
-    description:
-      '1:1, grup ve flash mentorluk; ak\u0131ll\u0131 e\u015fle\u015ftirme; program panolar\u0131; hedefler ve geri bildirim.',
-    icon: Handshake,
-  },
-  {
-    title: 'Kariyer & \u0130\u015f Panosu',
-    description:
-      '\u0130\u015f/staj ilanlar\u0131, ba\u015fvuru/\u00f6neri takibi, kurum ortakl\u0131klar\u0131.',
-    icon: Briefcase,
-  },
-  {
-    title: 'Etkinlikler',
-    description:
-      'Sanal/fiziksel etkinlik olu\u015fturma, biletleme/RSVP, takvim entegrasyonu, hat\u0131rlat\u0131c\u0131lar, geri bildirim.',
-    icon: Calendar,
-  },
-  {
-    title: 'Ba\u011f\u0131\u015f & Kampanyalar',
-    description:
-      'G\u00f6m\u00fcl\u00fc ba\u011f\u0131\u015f formlar\u0131, ba\u011f\u0131\u015f g\u00fcnleri, crowdfunding, ba\u011f\u0131\u015f analiti\u011fi; CRM senkronizasyonu.',
-    icon: HeartHandshake,
-  },
-  {
-    title: '\u0130leti\u015fim & Otomasyon',
-    description:
-      'B\u00fclten, haftal\u0131k \u00f6zet, segmentlere \u00f6zel hedefli g\u00f6nderimler, ki\u015fiselle\u015ftirilmi\u015f video mesajlar.',
-    icon: Mail,
-  },
-  {
-    title: 'Analitik & Raporlama',
-    description:
-      'Aktif kullan\u0131c\u0131, geri d\u00f6n\u00fc\u015f oran\u0131, mentorluk ili\u015fkileri, etkinlik kat\u0131l\u0131m\u0131, i\u015f panosu metrikleri; CASE metrikleri uyumu.',
-    icon: BarChart3,
-  },
-  {
-    title: 'Entegrasyon & API',
-    description:
-      'CRM (Salesforce/RE NXT), \u00f6deme a\u011f ge\u00e7itleri, SSO, takvim; REST API/Webhook (tan\u0131t\u0131m ama\u00e7l\u0131).',
-    icon: Cable,
-  },
-  {
-    title: 'G\u00fcvenlik & Yetkiler',
-    description:
-      'Rol tabanl\u0131 eri\u015fim, i\u00e7erik moderasyonu, denetim g\u00fcnl\u00fckleri, gizlilik kontrolleri.',
-    icon: ShieldCheck,
-  },
-  {
-    title: 'Mobil & Duyarl\u0131 Tasar\u0131m',
-    description:
-      'Tam duyarl\u0131 aray\u00fcz, mobil odakl\u0131 deneyim, push bildirim vizyonu.',
-    icon: Smartphone,
-  },
-  {
-    title: '\u00d6zelle\u015ftirme',
-    description:
-      'Tema/renkler, \u00f6zel profil alanlar\u0131, \u00f6zel formlar ve e-posta \u015fablonlar\u0131, \u00e7ok dilli altyap\u0131.',
-    icon: Settings,
-  },
-  {
-    title: 'G\u00f6n\u00fcll\u00fcl\u00fck & Pazar Yeri',
-    description:
-      'G\u00f6n\u00fcll\u00fc e\u015fle\u015ftirme ve saat takibi; mezun i\u015fletmeleri dizini.',
-    icon: Heart,
-  },
-  {
-    title: 'Oyunla\u015ft\u0131rma',
-    description: 'Rozetler, g\u00f6revler, liderlik tablolar\u0131.',
-    icon: Trophy,
-  },
-];
+};
 
-const FeaturesSection = () => {
+const FeaturesSection = ({ language }) => {
+  const copy = COPY[language];
   const fadeHeading = useFadeInUp();
   const hoverLift = useHoverLift();
   const shouldReduceMotion = useReducedMotion();
@@ -126,19 +237,15 @@ const FeaturesSection = () => {
     <section id="ozellikler" className="bg-white py-24 dark:bg-slate-950">
       <div className="mx-auto max-w-6xl px-6">
         <Motion.div className="text-center" {...fadeHeading}>
-          <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl dark:text-white">
-            K\u00f6pr\u00fcMezun, alumni/topluluk y\u00f6netiminin t\u00fcm yap\u0131 ta\u015flar\u0131n\u0131 tek \u00e7at\u0131 alt\u0131nda sunar.
-          </h2>
-          <p className="mx-auto mt-4 max-w-3xl text-base text-slate-600 dark:text-slate-300">
-            Kurumsal \u00f6l\u00e7ekteki mezun ve topluluk programlar\u0131n\u0131z\u0131 u\u00e7tan uca y\u00f6netmeniz, \u00f6l\u00e7meniz ve g\u00fc\u00e7lendirmeniz i\u00e7in tasarland\u0131.
-          </p>
+          <h2 className="text-3xl font-semibold text-slate-900 sm:text-4xl dark:text-white">{copy.title}</h2>
+          <p className="mx-auto mt-4 max-w-3xl text-base text-slate-600 dark:text-slate-300">{copy.description}</p>
         </Motion.div>
         <div className="mt-16 grid gap-6 md:grid-cols-2">
-          {features.map((feature, index) => {
+          {copy.features.map((feature, index) => {
             const Icon = feature.icon;
             return (
               <Motion.article
-                key={feature.title}
+                key={`${feature.title}-${language}`}
                 className="flex h-full flex-col gap-4 rounded-3xl border border-slate-200 bg-white p-6 text-left shadow-sm transition dark:border-slate-800 dark:bg-slate-900"
                 initial={shouldReduceMotion ? undefined : { opacity: 0, y: 24 }}
                 whileInView={shouldReduceMotion ? undefined : { opacity: 1, y: 0 }}
@@ -158,6 +265,10 @@ const FeaturesSection = () => {
       </div>
     </section>
   );
+};
+
+FeaturesSection.propTypes = {
+  language: PropTypes.oneOf(['tr', 'en']).isRequired,
 };
 
 export default FeaturesSection;

@@ -1,9 +1,45 @@
-import { useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
+import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion as Motion } from 'framer-motion';
 import { XCircle, CheckCircle2 } from 'lucide-react';
 
-const DemoModal = ({ isOpen, onClose }) => {
+const COPY = {
+  tr: {
+    title: 'Canlı Demo İste',
+    description: 'Formu doldurun; Türkiye’deki ekip arkadaşlarımız 24 saat içinde sizinle iletişime geçsin.',
+    name: 'Ad Soyad',
+    organisation: 'Kurum',
+    email: 'İş E-postası',
+    segment: 'Segment',
+    segments: ['Üniversite / Okul', 'STK / Vakıf', 'Kurumsal Alumni', 'Dernek / Oda'],
+    need: 'Öncelikli İhtiyacınız',
+    placeholder: 'Mentorluk, bağış kampanyası, etkinlik yönetimi...',
+    submit: 'Talebimi Gönder',
+    successTitle: 'Teşekkürler!',
+    successBody: 'Başvurunuz kaydedildi. Türkiye’deki ekip arkadaşlarımız en kısa sürede sizinle iletişime geçecek.',
+    close: 'Kapat',
+    closeAria: 'Demoyu kapat',
+  },
+  en: {
+    title: 'Request a Live Demo',
+    description: 'Share your details and our team in Turkey will reach out within 24 hours.',
+    name: 'Full Name',
+    organisation: 'Organisation',
+    email: 'Work Email',
+    segment: 'Segment',
+    segments: ['University / School', 'NGO / Foundation', 'Corporate Alumni', 'Association / Chamber'],
+    need: 'Primary Need',
+    placeholder: 'Mentoring, fundraising campaign, event management...',
+    submit: 'Submit Request',
+    successTitle: 'Thank you!',
+    successBody: 'Your request has been recorded. Our team in Turkey will contact you shortly.',
+    close: 'Close',
+    closeAria: 'Close demo request modal',
+  },
+};
+
+const DemoModal = ({ language, isOpen, onClose }) => {
+  const copy = COPY[language];
   const [isSubmitted, setIsSubmitted] = useState(false);
   const nameRef = useRef(null);
 
@@ -58,7 +94,7 @@ const DemoModal = ({ isOpen, onClose }) => {
               type="button"
               onClick={onClose}
               className="absolute right-4 top-4 inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-500 transition hover:bg-slate-100 hover:text-slate-700 focus-visible:outline focus-visible:outline-2 focus-visible:outline-indigo-500 dark:hover:bg-slate-800 dark:hover:text-slate-100"
-              aria-label="Demoyu kapat"
+              aria-label={copy.closeAria}
             >
               <XCircle className="h-5 w-5" aria-hidden="true" />
             </button>
@@ -66,15 +102,13 @@ const DemoModal = ({ isOpen, onClose }) => {
               <form className="space-y-6" onSubmit={handleSubmit}>
                 <div>
                   <h2 id="demo-modal-title" className="text-2xl font-semibold text-slate-900 dark:text-white">
-                    Canl\u0131 Demo \u0130ste
+                    {copy.title}
                   </h2>
-                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">
-                    Formu doldurun; T\u00fcrkiye\u2019deki ekip arkada\u015flar\u0131m\u0131z 24 saat i\u00e7inde sizinle ileti\u015fime ge\u00e7sin.
-                  </p>
+                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-300">{copy.description}</p>
                 </div>
                 <div className="grid gap-4 sm:grid-cols-2">
                   <label className="text-sm font-medium text-slate-700 dark:text-slate-200">
-                    Ad Soyad
+                    {copy.name}
                     <input
                       ref={nameRef}
                       type="text"
@@ -84,7 +118,7 @@ const DemoModal = ({ isOpen, onClose }) => {
                     />
                   </label>
                   <label className="text-sm font-medium text-slate-700 dark:text-slate-200">
-                    Kurum
+                    {copy.organisation}
                     <input
                       type="text"
                       name="organization"
@@ -93,7 +127,7 @@ const DemoModal = ({ isOpen, onClose }) => {
                     />
                   </label>
                   <label className="text-sm font-medium text-slate-700 dark:text-slate-200">
-                    \u0130\u015f E-postas\u0131
+                    {copy.email}
                     <input
                       type="email"
                       name="email"
@@ -102,47 +136,44 @@ const DemoModal = ({ isOpen, onClose }) => {
                     />
                   </label>
                   <label className="text-sm font-medium text-slate-700 dark:text-slate-200">
-                    Segment
+                    {copy.segment}
                     <select
                       name="segment"
                       className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                     >
-                      <option>\u00dcniversite / Okul</option>
-                      <option>STK / Vak\u0131f</option>
-                      <option>Kurumsal Alumni</option>
-                      <option>Dernek / Oda</option>
+                      {copy.segments.map((option) => (
+                        <option key={option}>{option}</option>
+                      ))}
                     </select>
                   </label>
                 </div>
                 <label className="text-sm font-medium text-slate-700 dark:text-slate-200">
-                  \u00d6ncelikli \u0130htiyac\u0131n\u0131z
+                  {copy.need}
                   <textarea
                     name="need"
                     rows="3"
                     className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
-                    placeholder="Mentorluk, ba\u011f\u0131\u015f kampanyas\u0131, etkinlik y\u00f6netimi..."
+                    placeholder={copy.placeholder}
                   />
                 </label>
                 <button
                   type="submit"
                   className="inline-flex w-full items-center justify-center rounded-full bg-indigo-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
                 >
-                  Talebimi G\u00f6nder
+                  {copy.submit}
                 </button>
               </form>
             ) : (
               <div className="flex flex-col items-center gap-4 text-center">
                 <CheckCircle2 className="h-12 w-12 text-emerald-500" aria-hidden="true" />
-                <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">Te\u015fekk\u00fcrler!</h2>
-                <p className="text-sm text-slate-600 dark:text-slate-300">
-                  Ba\u015fvurunuz kaydedildi. T\u00fcrkiye\u2019deki ekip arkada\u015flar\u0131m\u0131z en k\u0131sa s\u00fcrede sizinle ileti\u015fime ge\u00e7ecek.
-                </p>
+                <h2 className="text-2xl font-semibold text-slate-900 dark:text-white">{copy.successTitle}</h2>
+                <p className="text-sm text-slate-600 dark:text-slate-300">{copy.successBody}</p>
                 <button
                   type="button"
                   onClick={onClose}
                   className="mt-4 inline-flex items-center justify-center rounded-full border border-slate-300 px-5 py-2.5 text-sm font-semibold text-slate-700 transition hover:border-indigo-500 hover:text-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 dark:border-slate-700 dark:text-slate-200"
                 >
-                  Kapat
+                  {copy.close}
                 </button>
               </div>
             )}
@@ -154,6 +185,7 @@ const DemoModal = ({ isOpen, onClose }) => {
 };
 
 DemoModal.propTypes = {
+  language: PropTypes.oneOf(['tr', 'en']).isRequired,
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
 };
