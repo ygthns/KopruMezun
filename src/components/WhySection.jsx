@@ -4,25 +4,59 @@ import { useFadeInUp, useHoverLift } from '../hooks/useMotionPreferences';
 
 const COPY = {
   tr: {
-    title: 'Neden KöprüMezun?',
-    description: 'Mezun ve topluluk yönetiminin kritik yapı taşlarını tek platformda, Türkiye sınırları içinde güvenle birleştiriyoruz.',
-    values: [
-      { title: 'Daha Güçlü Bağlar', description: 'Mezun-öğrenci etkileşimini kalıcı ilişkilere dönüştürün.' },
-      { title: 'Ölçeklenebilir Programlar', description: 'Yüzlerce mentorluk eşleşmesini kolayca yönetin.' },
-      { title: 'Veri Türkiye’de', description: 'KVKK odaklı mimari ile veriler yurt içinde saklanır.' },
-      { title: 'Kolay Kurulum', description: 'Saatler içinde markalı portalınız hazır.' },
-    ],
+  title: 'Neden KöprüMezun?',
+  description:
+    'KöprüMezun, üniversitelerin mezun ilişkilerini, bağış süreçlerini ve öğrenci etkileşimlerini tek platformda buluşturan, yerli ve güçlü bir topluluk altyapısıdır.',
+  values: [
+    {
+      title: 'Tüm Topluluk Tek Çatı Altında',
+      description:
+        'Mezunlar, öğrenciler, akademisyenler ve bağışçılar aynı dijital ekosistemde buluşur; iletişim, mentorluk, iş ilanları, etkinlikler ve pazar yeri tek platformda yönetilir.',
+    },
+    {
+      title: 'Yerli ve Güvenli Altyapı',
+      description:
+        'Tüm veriler Türkiye sınırları içindeki veri merkezlerinde saklanır. KVKK’ya tam uyumlu mimariyle, veriler tamamen kurumunuzun kontrolündedir.',
+    },
+    {
+      title: 'Markanıza Özel Deneyim',
+      description:
+        'Üniversitenizin logosu, renkleri ve kurumsal diliyle tamamen özelleştirilmiş bir portal sunar; kullanıcılar kendilerini kendi kurumlarında hisseder.',
+    },
+    {
+      title: 'Gelişen İş Birliği Ekosistemi',
+      description:
+        'KöprüMezun yalnızca bir yazılım şirketi değil; üniversitelerle birlikte büyüyen bir ekosistem ortağıdır. Her yeni kurumdan öğrenir, geri bildirimleri geliştirmeye dönüştürür, ihtiyaçlara göre çözümler üretir. Bu yaklaşım sayesinde, her üniversite yalnızca bir kullanıcı değil — KöprüMezun vizyonunun bir parçası olur.',
+    },
+  ],
   },
-  en: {
-    title: 'Why KöprüMezun?',
-    description: 'We unite the critical building blocks of alumni and community management on one secure platform within Turkey’s borders.',
-    values: [
-      { title: 'Stronger Connections', description: 'Turn alumni-student engagement into lasting relationships.' },
-      { title: 'Scalable Programs', description: 'Easily manage hundreds of mentorship matches.' },
-      { title: 'Data in Turkey', description: 'Data is hosted domestically with a KVKK-first architecture.' },
-      { title: 'Rapid Launch', description: 'Deploy your branded portal in just a few hours.' },
-    ],
-  },
+en: {
+  title: 'Why KöprüMezun?',
+  description:
+    'KöprüMezun is a unified digital ecosystem that empowers universities to strengthen alumni relations, manage donations, and connect students and graduates — all on a secure, locally hosted platform.',
+  values: [
+    {
+      title: 'One Platform for the Entire Community',
+      description:
+        'Alumni, students, faculty, and donors come together in one digital ecosystem — communication, mentorship, job postings, events, and marketplace activities are managed on a single platform.',
+    },
+    {
+      title: 'Local and Secure Infrastructure',
+      description:
+        'All data is stored within Turkey’s borders in KVKK-compliant data centers, ensuring your institution retains full ownership and control of its information.',
+    },
+    {
+      title: 'Branded and Personalized Experience',
+      description:
+        'Provide a fully customized portal that reflects your university’s logo, colors, and communication style — creating a sense of belonging for every user.',
+    },
+    {
+      title: 'A Growing Collaboration Ecosystem',
+      description:
+        'KöprüMezun is more than a software provider — it is a long-term ecosystem partner that grows with universities. We learn from every institution, transform feedback into innovation, and build tailored solutions together. Every university becomes not just a user, but a part of the KöprüMezun vision.',
+    },
+  ],
+},
 };
 
 const WhySection = ({ language }) => {
