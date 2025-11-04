@@ -55,7 +55,6 @@ const COPY = {
         ],
       },
     ],
-    badge: 'Segment bazlı altyapı',
   },
   en: {
     title: 'Solutions by segment',
@@ -107,7 +106,6 @@ const COPY = {
         ],
       },
     ],
-    badge: 'Segment-ready infrastructure',
   },
 };
 
