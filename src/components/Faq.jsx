@@ -7,37 +7,126 @@ import { useFadeInUp } from '../hooks/useMotionPreferences';
 const FAQ_COPY = {
   tr: {
     title: 'Sık Sorulan Sorular',
-    description: 'Demo sayfamızda öne çıkan başlıklar, ürün vizyonumuzu ve veri egemenliği yaklaşımımızı yansıtır.',
+    description:
+      'KöprüMezun’un amacı, mezunlar, öğrenciler ve üniversiteler arasında güçlü bir dijital bağ kurmaktır. Aşağıda en çok merak edilen konuları bulabilirsiniz.',
     items: [
-      { question: 'Bu site gerçek ürün mü?', answer: 'Bu, tanıtım amaçlı demo sayfadır.' },
-      { question: 'Veriler nerede saklanıyor?', answer: 'Türkiye içindeki veri merkezlerinde.' },
-      { question: 'Mentorluk nasıl işler?', answer: 'Profil hedeflerine göre akıllı eşleştirme ve program takibi.' },
-      { question: 'CRM entegrasyonu var mı?', answer: 'Ürün vizyonu içinde evet; bu sayfa demo.' },
-      { question: 'Mobil destek?', answer: 'Tam duyarlı arayüz; mobil uygulama vizyonu.' },
-      { question: 'Güvenlik?', answer: 'RBAC, şifreleme, denetim günlükleri, KVKK odaklı yaklaşım.' },
-      { question: 'Etkinlik & biletleme?', answer: 'Demo akışı, gerçek ödeme yok.' },
-      { question: 'İş ilanları?', answer: 'Pano ve başvuru takibi (temsili).' },
-      { question: 'Oyunlaştırma?', answer: 'Rozet/puan sistemi vizyonu.' },
-      { question: 'Destek?', answer: '“Demo İste” formunu doldurun; sizinle iletişime geçelim.' },
+      {
+        question: 'KöprüMezun tam olarak nedir?',
+        answer:
+          'KöprüMezun, üniversitelerin mezun, öğrenci ve akademisyenlerini tek bir çatı altında buluşturan, iletişim, mentorluk ve bağış süreçlerini dijitalleştiren bir topluluk platformudur.',
+      },
+      {
+        question: 'Platformu kimler kullanabilir?',
+        answer:
+          'Üniversitenizin onaylı öğrencileri, mezunları, akademisyenleri ve davet edilen paydaşlar erişim sağlayabilir.',
+      },
+      {
+        question: 'KöprüMezun ücretli mi?',
+        answer:
+          'Hayır, öğrenciler ve mezunlar için ücretsizdir. Üniversiteler ise kurumsal lisans modeliyle platformu kullanır.',
+      },
+      {
+        question: 'Verilerim güvende mi?',
+        answer:
+          'Evet. Tüm veriler Türkiye’deki yerel veri merkezlerinde saklanır ve KVKK’ya tam uyumludur.',
+      },
+      {
+        question: 'Mentorluk sistemi nasıl işliyor?',
+        answer:
+          'Mezunlar ve öğrenciler, ilgi alanı ve hedeflerine göre akıllı eşleştirme sistemiyle buluşturulur. Süreç platform üzerinden izlenebilir.',
+      },
+      {
+        question: 'Etkinlik oluşturabiliyor muyum?',
+        answer:
+          'Evet. Üniversite onaylı kullanıcılar kendi etkinliklerini oluşturabilir, kayıt toplayabilir ve katılımcı yönetimi yapabilir.',
+      },
+      {
+        question: 'Bağış veya burs desteği sağlanabiliyor mu?',
+        answer:
+          'Evet. Platform, üniversiteniz adına güvenli bağış kampanyaları düzenlenmesini destekler.',
+      },
+      {
+        question: 'Mobil uygulama var mı?',
+        answer:
+          'Web sürümü tamamen mobil uyumludur. Yerel mobil uygulama geliştirme planımız yol haritasındadır.',
+      },
+      {
+        question: 'KöprüMezun diğer platformlardan farkı ne?',
+        answer:
+          'KöprüMezun yalnızca bir mezun ağı değil; üniversite topluluğunun tüm etkileşimlerini tek çatı altında toplayan bir ekosistemdir. \
+      Bağış ve burs yönetimi, mezun–öğrenci mentorluk sistemi, etkinlik ve biletleme, iş ilanı ve başvuru süreçleri, mezun pazaryeri, \
+      canlı sohbet ve topluluk duyuruları gibi onlarca özelliği bir araya getirir. \
+      Tüm bu modüller tamamen Türkiye’de geliştirilen, KVKK uyumlu ve kuruma özel bir altyapı üzerinde çalışır.',
+      },
+      {
+        question: 'Demo talep etmek istiyorum, nasıl ulaşabilirim?',
+        answer:
+          'Ana sayfadaki “Demo İste” formunu doldurun, ekibimiz kısa sürede sizinle iletişime geçsin.',
+      },
     ],
   },
   en: {
     title: 'Frequently Asked Questions',
-    description: 'These highlights summarise our product vision and approach to data sovereignty.',
+    description:
+      'KöprüMezun connects graduates, students, and universities through a secure, locally hosted community platform. Here are the most common questions we receive.',
     items: [
-      { question: 'Is this the real product?', answer: 'This is a promotional demo page.' },
-      { question: 'Where is the data hosted?', answer: 'Within data centres located in Turkey.' },
-      { question: 'How does mentoring work?', answer: 'Smart matching based on profile goals with progress tracking.' },
-      { question: 'Do you support CRM integrations?', answer: 'It is part of the product vision; this page is a demo.' },
-      { question: 'Is there mobile support?', answer: 'A fully responsive interface; native app vision on the roadmap.' },
-      { question: 'What about security?', answer: 'RBAC, encryption, audit logs, and a KVKK-first approach.' },
-      { question: 'Events & ticketing?', answer: 'Demo flow only, no real payments.' },
-      { question: 'Job postings?', answer: 'Representative board and application tracking.' },
-      { question: 'Gamification?', answer: 'Badges and points vision on the roadmap.' },
-      { question: 'Support?', answer: 'Complete the “Request Demo” form and we’ll contact you.' },
+      {
+        question: 'What exactly is KöprüMezun?',
+        answer:
+          'KöprüMezun is a community platform that connects graduates, students, and universities — enabling mentorship, networking, and fundraising within a secure digital space.',
+      },
+      {
+        question: 'Who can join the platform?',
+        answer:
+          'Verified students, alumni, faculty members, and invited university partners can access the platform.',
+      },
+      {
+        question: 'Is KöprüMezun free to use?',
+        answer:
+          'Yes. It’s free for students and alumni. Universities use it under an institutional license.',
+      },
+      {
+        question: 'Is my data secure?',
+        answer:
+          'Absolutely. All data is stored within data centers located in Turkey and fully complies with KVKK regulations.',
+      },
+      {
+        question: 'How does the mentorship system work?',
+        answer:
+          'Students and alumni are matched based on shared interests and career goals, with progress tracking directly through the platform.',
+      },
+      {
+        question: 'Can I create or join events?',
+        answer:
+          'Yes. Verified users can organize events, manage participants, and track registrations digitally.',
+      },
+      {
+        question: 'Does the platform support donations or scholarships?',
+        answer:
+          'Yes. KöprüMezun enables secure fundraising campaigns and scholarship initiatives under the university’s management.',
+      },
+      {
+        question: 'Is there a mobile app?',
+        answer:
+          'The web version is fully mobile-friendly. A native mobile app is planned in our upcoming roadmap.',
+      },
+      {
+        question: 'What makes KöprüMezun different from other platforms?',
+        answer:
+          'KöprüMezun is more than an alumni network — it’s a complete digital ecosystem that unites all university community interactions under one roof. \
+      It combines powerful features like donation and scholarship management, alumni–student mentorship, event organization and ticketing, \
+      job posting and application tracking, alumni marketplace, live chat, and community announcements. \
+      All modules run on a fully local, KVKK-compliant infrastructure developed and hosted in Turkey, tailored to each institution.',
+      },
+      {
+        question: 'How can I request a demo?',
+        answer:
+          'Simply fill out the “Request Demo” form on our homepage, and our team will contact you shortly.',
+      },
     ],
   },
 };
+
 
 const Faq = ({ language }) => {
   const copy = FAQ_COPY[language];

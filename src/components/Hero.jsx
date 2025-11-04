@@ -6,13 +6,12 @@ import { useFadeInUp } from '../hooks/useMotionPreferences';
 const HERO_COPY = {
   tr: {
     badge: 'Topluluğunuzu bağlayın, geleceği birlikte kurun.',
-    heading: 'Alumni ve topluluğunuzu tek bir köprüde buluşturun.',
+    heading: 'Mezunlarınızı ve topluluğunuzu tek bir köprüde buluşturun.',
     description:
-      'KöprüMezun, mezun-öğrenci ağları, mentorluk, etkinlikler, iş fırsatları ve bağışı tek platformda birleştirir. Türkiye’de geliştirildi; veriler Türkiye’de kalır.',
+      'KöprüMezun, mezun-öğrenci ağları, mentorluk, etkinlikler, iş fırsatları ve bağışı tek platformda birleştirir.',
     primaryCta: 'Demoyu İzle',
     secondaryCta: 'PDF Broşür',
     tertiaryCta: 'Bize Ulaşın',
-    note: 'Bu sayfa tanıtım amaçlı demo içeriği içerir.',
     summary: [
       { label: 'Türkiye’de geliştirildi', value: 'Yerli uzman ekiple üretildi' },
       { label: 'Veri egemenliği', value: 'Sunucular Türkiye sınırlarında' },
@@ -29,8 +28,6 @@ const HERO_COPY = {
       { message: 'Enerji sektöründe çalışan 48 mezun yeni mentor olarak eklendi.', time: '22dk önce' },
       { message: 'Sağlık İnovasyonu kampanyası %82 hedefe ulaştı.', time: '1s önce' },
     ],
-    infrastructureBadge: 'Türkiye’de altyapı',
-    infrastructureText: 'İstanbul & Ankara veri merkezleri',
   },
   en: {
     badge: 'Connect your community, build the future together.',
@@ -57,8 +54,6 @@ const HERO_COPY = {
       { message: '48 alumni in energy joined as mentors.', time: '22 min ago' },
       { message: 'Health Innovation campaign reached 82% of goal.', time: '1 hr ago' },
     ],
-    infrastructureBadge: 'Infrastructure in Turkey',
-    infrastructureText: 'Istanbul & Ankara data centers',
   },
 };
 

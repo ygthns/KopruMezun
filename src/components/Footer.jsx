@@ -10,12 +10,11 @@ const SOCIAL_LINKS = [
 const COPY = {
   tr: {
     strapline: 'KöprüMezun',
-    heading: 'Türkiye’de geliştirildi. Veriler Türkiye’de kalır.',
     body: 'Topluluklarınızı, mezunlarınızı ve mentorluk programlarınızı tek bir yerli platformda uçtan uca yönetin.',
     contactHeading: 'İletişim',
     address: 'İstanbul, Türkiye',
     socialsHeading: 'Sosyal',
-    copyright: '© KöprüMezun — Türkiye’de geliştirildi. Veriler Türkiye’de kalır.',
+    copyright: '© KöprüMezun',
     tagline: 'Türkiye’nin ilk yerli mezun ağı ve mentorluk platformu',
   },
   en: {
