@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import TrustedBy from './components/TrustedBy';
 import WhySection from './components/WhySection';
 import FeaturesSection from './components/FeaturesSection';
+import ProfileShowcase from './components/ProfileShowcase';
 import SolutionsTabs from './components/SolutionsTabs';
 import DataSovereignty from './components/DataSovereignty';
 import DemoSection from './components/DemoSection';
@@ -74,6 +75,7 @@ const App = () => {
         <TrustedBy language={language} />
         <WhySection language={language} />
         <FeaturesSection language={language} />
+        <ProfileShowcase language={language} />
         <SolutionsTabs language={language} />
         <DataSovereignty language={language} />
         <DemoSection language={language} onDemoClick={openDemo} />

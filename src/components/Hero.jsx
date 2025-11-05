@@ -12,6 +12,7 @@ const HERO_COPY = {
     primaryCta: 'Demoyu İzle',
     secondaryCta: 'PDF Broşür',
     tertiaryCta: 'Bize Ulaşın',
+    note: 'Bu sayfa tanıtım amaçlı demo içeriği içerir.',
     summary: [
       { label: 'Türkiye’de geliştirildi', value: 'Yerli uzman ekiple üretildi' },
       { label: 'Veri egemenliği', value: 'Sunucular Türkiye sınırlarında' },
@@ -28,6 +29,8 @@ const HERO_COPY = {
       { message: 'Enerji sektöründe çalışan 48 mezun yeni mentor olarak eklendi.', time: '22dk önce' },
       { message: 'Sağlık İnovasyonu kampanyası %82 hedefe ulaştı.', time: '1s önce' },
     ],
+    infrastructureBadge: 'Altyapı Notu',
+    infrastructureText: 'KVKK uyumlu bulut ve yerel yedekleme mimarisi.',
   },
   en: {
     badge: 'Connect your community, build the future together.',
@@ -54,6 +57,8 @@ const HERO_COPY = {
       { message: '48 alumni in energy joined as mentors.', time: '22 min ago' },
       { message: 'Health Innovation campaign reached 82% of goal.', time: '1 hr ago' },
     ],
+    infrastructureBadge: 'Infrastructure',
+    infrastructureText: 'KVKK-compliant cloud with localised backup architecture.',
   },
 };
 
