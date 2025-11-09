@@ -4,11 +4,26 @@ import { AnimatePresence, motion as Motion } from 'framer-motion';
 import { XCircle, CheckCircle2 } from 'lucide-react';
 
 const FORM_NAME = 'demo-request';
+const HONEYPOT_FIELD = 'bot-field';
+
+const createDefaultFormData = (segments) => ({
+  name: '',
+  organization: '',
+  email: '',
+  segment: segments?.[0] ?? '',
+  need: '',
+  [HONEYPOT_FIELD]: '',
+});
+
+const encodeFormData = (data) =>
+  Object.entries(data)
+    .map(([key, value]) => `${encodeURIComponent(key)}=${encodeURIComponent(value ?? '')}`)
+    .join('&');
 
 const COPY = {
   tr: {
     title: 'Canlı Demo İste',
-    description: 'Formu doldurun; Türkiye’deki ekip arkadaşlarımız 24 saat içinde sizinle iletişime geçsin.',
+    description: 'Formu doldurun; ekip arkadaşlarımız 24 saat içinde sizinle iletişime geçsin.',
     name: 'Ad Soyad',
     organisation: 'Kurum',
     email: 'İş E-postası',
@@ -27,7 +42,7 @@ const COPY = {
   },
   en: {
     title: 'Request a Live Demo',
-    description: 'Share your details and our team in Turkey will reach out within 24 hours.',
+    description: 'Share your details and our team will reach out within 24 hours.',
     name: 'Full Name',
     organisation: 'Organisation',
     email: 'Work Email',
@@ -51,13 +66,7 @@ const DemoModal = ({ language, isOpen, onClose }) => {
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
-  const [formData, setFormData] = useState({
-    name: '',
-    organization: '',
-    email: '',
-    segment: copy.segments[0],
-    need: '',
-  });
+  const [formData, setFormData] = useState(() => createDefaultFormData(copy.segments));
   const nameRef = useRef(null);
 
   useEffect(() => {
@@ -65,13 +74,7 @@ const DemoModal = ({ language, isOpen, onClose }) => {
       setIsSubmitted(false);
       setIsSubmitting(false);
       setErrorMessage('');
-      setFormData({
-        name: '',
-        organization: '',
-        email: '',
-        segment: copy.segments[0],
-        need: '',
-      });
+      setFormData(createDefaultFormData(copy.segments));
       window.setTimeout(() => {
         nameRef.current?.focus();
       }, 50);
@@ -100,19 +103,21 @@ const DemoModal = ({ language, isOpen, onClose }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (isSubmitting) return;
+
     setIsSubmitting(true);
     setErrorMessage('');
-    const payload = {
-      'form-name': FORM_NAME,
-      ...formData,
-      language,
-    };
+
+    const formElement = event.currentTarget;
+    const submission = new FormData(formElement);
+    submission.set('language', language);
+    submission.set('form-name', FORM_NAME);
+    submission.set(HONEYPOT_FIELD, formData[HONEYPOT_FIELD] ?? '');
 
     try {
       const response = await fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(payload).toString(),
+        body: encodeFormData(Object.fromEntries(submission.entries())),
       });
 
       if (!response.ok) {
@@ -160,15 +165,24 @@ const DemoModal = ({ language, isOpen, onClose }) => {
                 className="space-y-6"
                 onSubmit={handleSubmit}
                 data-netlify="true"
+                netlify="true"
                 netlify-honeypot="bot-field"
                 name={FORM_NAME}
                 method="POST"
+                action="/"
               >
                 <input type="hidden" name="form-name" value={FORM_NAME} />
+                <input type="hidden" name="language" value={language} />
                 <div className="hidden" aria-hidden="true">
                   <label>
                     {copy.honeypot}
-                    <input name="bot-field" />
+                    <input
+                      name={HONEYPOT_FIELD}
+                      value={formData[HONEYPOT_FIELD]}
+                      onChange={handleChange}
+                      autoComplete="off"
+                      tabIndex={-1}
+                    />
                   </label>
                 </div>
                 <div>

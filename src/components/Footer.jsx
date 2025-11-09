@@ -46,8 +46,8 @@ const Footer = ({ language }) => {
             <ul className="mt-4 space-y-3 text-sm text-white/80">
               <li className="flex items-center gap-3">
                 <Mail className="h-4 w-4 text-indigo-300" aria-hidden="true" />
-                <a href="mailto:hello@koprumezun.com" className="hover:text-white">
-                  hello@koprumezun.com
+                <a href="mailto:saglamyigithan@gmail.com" className="hover:text-white">
+                  saglamyigithan@gmail.com
                 </a>
               </li>
               <li className="flex items-center gap-3">

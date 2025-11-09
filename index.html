@@ -31,8 +31,18 @@
     <meta name="theme-color" content="#0f172a" />
   </head>
   <body>
-    <form name="demo-request" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <form
+      name="demo-request"
+      method="POST"
+      action="/"
+      netlify
+      data-netlify="true"
+      netlify-honeypot="bot-field"
+      hidden
+      aria-hidden="true"
+    >
       <input type="hidden" name="form-name" value="demo-request" />
+      <input type="hidden" name="language" value="" />
       <p>
         <label>
           Ad Soyad / Full Name
