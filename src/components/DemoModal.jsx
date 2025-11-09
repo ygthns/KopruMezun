@@ -3,6 +3,8 @@ import { useEffect, useRef, useState } from 'react';
 import { AnimatePresence, motion as Motion } from 'framer-motion';
 import { XCircle, CheckCircle2 } from 'lucide-react';
 
+const FORM_NAME = 'demo-request';
+
 const COPY = {
   tr: {
     title: 'Canlı Demo İste',
@@ -15,10 +17,13 @@ const COPY = {
     need: 'Öncelikli İhtiyacınız',
     placeholder: 'Mentorluk, bağış kampanyası, etkinlik yönetimi...',
     submit: 'Talebimi Gönder',
+    submitting: 'Gönderiliyor...',
     successTitle: 'Teşekkürler!',
     successBody: 'Başvurunuz kaydedildi. Türkiye’deki ekip arkadaşlarımız en kısa sürede sizinle iletişime geçecek.',
     close: 'Kapat',
     closeAria: 'Demoyu kapat',
+    error: 'Gönderirken bir sorun oluştu. Lütfen tekrar deneyin.',
+    honeypot: 'Bu alanı boş bırakın.',
   },
   en: {
     title: 'Request a Live Demo',
@@ -31,21 +36,42 @@ const COPY = {
     need: 'Primary Need',
     placeholder: 'Mentoring, fundraising campaign, event management...',
     submit: 'Submit Request',
+    submitting: 'Sending…',
     successTitle: 'Thank you!',
     successBody: 'Your request has been recorded. Our team in Turkey will contact you shortly.',
     close: 'Close',
     closeAria: 'Close demo request modal',
+    error: 'Something went wrong. Please try again.',
+    honeypot: 'Leave this field empty.',
   },
 };
 
 const DemoModal = ({ language, isOpen, onClose }) => {
   const copy = COPY[language];
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+  const [formData, setFormData] = useState({
+    name: '',
+    organization: '',
+    email: '',
+    segment: copy.segments[0],
+    need: '',
+  });
   const nameRef = useRef(null);
 
   useEffect(() => {
     if (isOpen) {
       setIsSubmitted(false);
+      setIsSubmitting(false);
+      setErrorMessage('');
+      setFormData({
+        name: '',
+        organization: '',
+        email: '',
+        segment: copy.segments[0],
+        need: '',
+      });
       window.setTimeout(() => {
         nameRef.current?.focus();
       }, 50);
@@ -53,7 +79,7 @@ const DemoModal = ({ language, isOpen, onClose }) => {
     } else {
       document.body.style.overflow = '';
     }
-  }, [isOpen]);
+  }, [isOpen, language, copy.segments]);
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -66,9 +92,40 @@ const DemoModal = ({ language, isOpen, onClose }) => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  const handleSubmit = (event) => {
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setIsSubmitted(true);
+    if (isSubmitting) return;
+    setIsSubmitting(true);
+    setErrorMessage('');
+    const payload = {
+      'form-name': FORM_NAME,
+      ...formData,
+      language,
+    };
+
+    try {
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(payload).toString(),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      setIsSubmitted(true);
+    } catch (error) {
+      console.error(error);
+      setErrorMessage(copy.error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -99,7 +156,21 @@ const DemoModal = ({ language, isOpen, onClose }) => {
               <XCircle className="h-5 w-5" aria-hidden="true" />
             </button>
             {!isSubmitted ? (
-              <form className="space-y-6" onSubmit={handleSubmit}>
+              <form
+                className="space-y-6"
+                onSubmit={handleSubmit}
+                data-netlify="true"
+                netlify-honeypot="bot-field"
+                name={FORM_NAME}
+                method="POST"
+              >
+                <input type="hidden" name="form-name" value={FORM_NAME} />
+                <div className="hidden" aria-hidden="true">
+                  <label>
+                    {copy.honeypot}
+                    <input name="bot-field" />
+                  </label>
+                </div>
                 <div>
                   <h2 id="demo-modal-title" className="text-2xl font-semibold text-slate-900 dark:text-white">
                     {copy.title}
@@ -113,6 +184,8 @@ const DemoModal = ({ language, isOpen, onClose }) => {
                       ref={nameRef}
                       type="text"
                       name="name"
+                      value={formData.name}
+                      onChange={handleChange}
                       required
                       className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                     />
@@ -122,6 +195,8 @@ const DemoModal = ({ language, isOpen, onClose }) => {
                     <input
                       type="text"
                       name="organization"
+                      value={formData.organization}
+                      onChange={handleChange}
                       required
                       className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                     />
@@ -131,6 +206,8 @@ const DemoModal = ({ language, isOpen, onClose }) => {
                     <input
                       type="email"
                       name="email"
+                      value={formData.email}
+                      onChange={handleChange}
                       required
                       className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                     />
@@ -139,6 +216,8 @@ const DemoModal = ({ language, isOpen, onClose }) => {
                     {copy.segment}
                     <select
                       name="segment"
+                      value={formData.segment}
+                      onChange={handleChange}
                       className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                     >
                       {copy.segments.map((option) => (
@@ -152,15 +231,23 @@ const DemoModal = ({ language, isOpen, onClose }) => {
                   <textarea
                     name="need"
                     rows="3"
+                    value={formData.need}
+                    onChange={handleChange}
                     className="mt-1 w-full rounded-2xl border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 focus:border-indigo-500 focus:outline-none focus:ring-2 focus:ring-indigo-200 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                     placeholder={copy.placeholder}
                   />
                 </label>
+                {errorMessage && (
+                  <p className="text-sm font-medium text-rose-600 dark:text-rose-400" role="alert">
+                    {errorMessage}
+                  </p>
+                )}
                 <button
                   type="submit"
-                  className="inline-flex w-full items-center justify-center rounded-full bg-indigo-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500"
+                  disabled={isSubmitting}
+                  className="inline-flex w-full items-center justify-center rounded-full bg-indigo-600 px-5 py-3 text-sm font-semibold text-white transition hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500 disabled:opacity-70"
                 >
-                  {copy.submit}
+                  {isSubmitting ? copy.submitting : copy.submit}
                 </button>
               </form>
             ) : (

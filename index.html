@@ -31,6 +31,45 @@
     <meta name="theme-color" content="#0f172a" />
   </head>
   <body>
+    <form name="demo-request" data-netlify="true" netlify-honeypot="bot-field" hidden>
+      <input type="hidden" name="form-name" value="demo-request" />
+      <p>
+        <label>
+          Ad Soyad / Full Name
+          <input type="text" name="name" />
+        </label>
+      </p>
+      <p>
+        <label>
+          Kurum / Organisation
+          <input type="text" name="organization" />
+        </label>
+      </p>
+      <p>
+        <label>
+          E-posta / Email
+          <input type="email" name="email" />
+        </label>
+      </p>
+      <p>
+        <label>
+          Segment
+          <input type="text" name="segment" />
+        </label>
+      </p>
+      <p>
+        <label>
+          İhtiyaç / Need
+          <textarea name="need"></textarea>
+        </label>
+      </p>
+      <p style="display: none;">
+        <label>
+          Bot field
+          <input name="bot-field" />
+        </label>
+      </p>
+    </form>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
