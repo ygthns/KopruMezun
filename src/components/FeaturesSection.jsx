@@ -33,7 +33,7 @@ const COPY = {
         icon: Palette,
       },
       {
-        title: 'Üye Dizin & Harita',
+        title: 'Üyeler',
         description:
           'Akıllı arama (bölge, sektör, beceri, mezuniyet yılı), harita görünümü, şirket/işletme dizini.',
         icon: Map,
@@ -135,7 +135,7 @@ const COPY = {
         icon: Palette,
       },
       {
-        title: 'Member Directory & Map',
+        title: 'Members',
         description:
           'Smart search by location, industry, skill, graduation year; map view; company/business listings.',
         icon: Map,
