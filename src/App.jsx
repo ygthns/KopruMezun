@@ -65,17 +65,12 @@ function DemoModal({ open, onClose, language, openerRef }) {
   const submit = async (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    if (formData.getAll('priority-modules').length === 0) {
-      setStatus('error');
-      setError(language === 'tr' ? 'Lütfen en az bir öncelikli modül seçin.' : 'Please select at least one priority module.');
-      return;
-    }
     setStatus('sending');
     setError('');
     const params = new URLSearchParams();
     for (const [key, value] of formData.entries()) params.append(key, value);
     try {
-      const response = await fetch('/', {
+      const response = await fetch('/__forms.html', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: params.toString(),
@@ -108,25 +103,18 @@ function DemoModal({ open, onClose, language, openerRef }) {
             <p className="modal-intro">{t.body}</p>
             <form name="demo-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submit}>
               <input type="hidden" name="form-name" value="demo-request" />
+              <input type="hidden" name="subject" value={t.subject} />
               <input type="hidden" name="language" value={language} />
               <input className="hidden" name="bot-field" tabIndex="-1" autoComplete="off" />
               <div className="form-grid">
                 <label>{t.fields.name}<span aria-label={t.required}>*</span><input name="name" type="text" required autoComplete="name" /></label>
                 <label>{t.fields.organization}<span aria-label={t.required}>*</span><input name="organization" type="text" required autoComplete="organization" /></label>
                 <label>{t.fields.email}<span aria-label={t.required}>*</span><input name="email" type="email" required autoComplete="email" /></label>
-                <label>{t.fields.role}<span aria-label={t.required}>*</span><input name="role" type="text" required autoComplete="organization-title" /></label>
                 <label>{t.fields.size}<span aria-label={t.required}>*</span>
                   <select name="community-size" required defaultValue=""><option value="" disabled>—</option>{t.sizes.map((item) => <option key={item}>{item}</option>)}</select>
                 </label>
-                <label>{t.fields.delivery}<span aria-label={t.required}>*</span>
-                  <select name="delivery-model" required defaultValue=""><option value="" disabled>—</option>{t.deliveries.map((item) => <option key={item}>{item}</option>)}</select>
-                </label>
               </div>
-              <fieldset>
-                <legend>{t.fields.modules}<span aria-label={t.required}>*</span></legend>
-                <div className="checkbox-grid">{t.modules.map((item) => <label className="check-label" key={item}><input type="checkbox" name="priority-modules" value={item} /> <span>{item}</span></label>)}</div>
-              </fieldset>
-              <label>{t.fields.need}<span aria-label={t.required}>*</span><textarea name="need" rows="4" required /></label>
+              <label>{t.fields.need}<span className="optional-label">{t.optional}</span><textarea name="need" rows="3" /></label>
               <p className="form-privacy">{t.consent} <a href="#privacy" onClick={onClose}>{t.privacy}</a></p>
               {status === 'error' && <p className="form-error" role="alert">{error}</p>}
               <button className="button button-primary button-wide" type="submit" disabled={status === 'sending'}>
@@ -296,7 +284,7 @@ function App() {
         </section>
       </main>
 
-      <footer className="site-footer"><div className="container footer-grid"><div><a className="brand footer-brand" href="#top" aria-label="KöprüMezun"><span>Köprü</span><strong>Mezun</strong></a><p>{t.footer.summary}</p></div><div><h3>{t.footer.product}</h3><a href="#modules">{t.nav.modules}</a><a href="#security">{t.nav.security}</a><a href="#pricing">{t.nav.pricing}</a></div><div><h3>{t.footer.company}</h3><a href="/brochure.pdf" download>{t.footer.brochure}</a><a href="#privacy">{t.footer.privacy}</a><a href="mailto:bilgi@koprumezun.com">bilgi@koprumezun.com</a></div></div><div className="container footer-bottom">© {new Date().getFullYear()} {t.footer.copyright}<span>koprumezun.com</span></div></footer>
+      <footer className="site-footer"><div className="container footer-grid"><div><a className="brand footer-brand" href="#top" aria-label="KöprüMezun"><span>Köprü</span><strong>Mezun</strong></a><p>{t.footer.summary}</p></div><div><h3>{t.footer.product}</h3><a href="#modules">{t.nav.modules}</a><a href="#security">{t.nav.security}</a><a href="#pricing">{t.nav.pricing}</a></div><div><h3>{t.footer.company}</h3><a href="/brochure.pdf" download>{t.footer.brochure}</a><a href="#privacy">{t.footer.privacy}</a><a href="mailto:info@koprumezun.com">info@koprumezun.com</a></div></div><div className="container footer-bottom">© {new Date().getFullYear()} {t.footer.copyright}<span>koprumezun.com</span></div></footer>
       <DemoModal open={demoOpen} onClose={() => setDemoOpen(false)} language={language} openerRef={openerRef} />
     </div>
   );

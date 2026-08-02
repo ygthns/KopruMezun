@@ -307,7 +307,7 @@ def page_cta(c):
     c.drawString(162, 181, "koprumezun.com")
     c.setFillColor(PALE)
     c.setFont("KM-Regular", 10)
-    c.drawString(162, 157, "bilgi@koprumezun.com")
+    c.drawString(162, 157, "info@koprumezun.com")
     paragraph(c, "Form bilgileri Netlify Forms altyapısından KöprüMezun satış ekibine iletilir ve talebi değerlendirmek amacıyla kullanılır. Ayrıntılı açıklama web sitesinde yer alır.", 162, 130, 365, size=7.5, leading=11, color=PALE)
 
 

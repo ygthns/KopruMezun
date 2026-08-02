@@ -218,6 +218,7 @@ section[id], main > section { scroll-margin-top: 88px; }
 .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .modal-panel form > label, .form-grid label, fieldset legend { display: block; color: var(--navy-900); font-size: .78rem; font-weight: 800; }
 .modal-panel label > span[aria-label], fieldset legend span { margin-left: .15rem; color: #a01c2f; }
+.modal-panel .optional-label { margin-left: .45rem; color: var(--muted); font-size: .7rem; font-weight: 600; }
 .modal-panel input:not([type="checkbox"]), .modal-panel select, .modal-panel textarea { width: 100%; margin-top: .42rem; border: 1px solid #bcc8d5; border-radius: .45rem; background: #fff; color: var(--navy-950); padding: .72rem .8rem; }
 .modal-panel textarea { resize: vertical; }
 .modal-panel fieldset { margin: 1rem 0; padding: 0; border: 0; }
