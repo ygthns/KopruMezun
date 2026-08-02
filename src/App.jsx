@@ -165,6 +165,7 @@ function App() {
       <header className="site-header">
         <div className="nav-wrap">
           <a className="brand" href="#top" aria-label="KöprüMezun">
+            <span className="brand-mark" aria-hidden="true"><img src="/logos/kopruyazisizbeyazlogo.svg" alt="" /></span>
             <span>Köprü</span><strong>Mezun</strong>
           </a>
           <nav className="desktop-nav" aria-label={language === 'tr' ? 'Ana navigasyon' : 'Primary navigation'}>
@@ -284,7 +285,7 @@ function App() {
         </section>
       </main>
 
-      <footer className="site-footer"><div className="container footer-grid"><div><a className="brand footer-brand" href="#top" aria-label="KöprüMezun"><span>Köprü</span><strong>Mezun</strong></a><p>{t.footer.summary}</p></div><div><h3>{t.footer.product}</h3><a href="#modules">{t.nav.modules}</a><a href="#security">{t.nav.security}</a><a href="#pricing">{t.nav.pricing}</a></div><div><h3>{t.footer.company}</h3><a href="/brochure.pdf" download>{t.footer.brochure}</a><a href="#privacy">{t.footer.privacy}</a><a href="mailto:info@koprumezun.com">info@koprumezun.com</a></div></div><div className="container footer-bottom">© {new Date().getFullYear()} {t.footer.copyright}<span>koprumezun.com</span></div></footer>
+      <footer className="site-footer"><div className="container footer-grid"><div><a className="brand footer-brand" href="#top" aria-label="KöprüMezun"><span className="brand-mark" aria-hidden="true"><img src="/logos/kopruyazisizbeyazlogo.svg" alt="" /></span><span>Köprü</span><strong>Mezun</strong></a><p>{t.footer.summary}</p></div><div><h3>{t.footer.product}</h3><a href="#modules">{t.nav.modules}</a><a href="#security">{t.nav.security}</a><a href="#pricing">{t.nav.pricing}</a></div><div><h3>{t.footer.company}</h3><a href="/brochure.pdf" download>{t.footer.brochure}</a><a href="#privacy">{t.footer.privacy}</a><a href="mailto:info@koprumezun.com">info@koprumezun.com</a></div></div><div className="container footer-bottom">© {new Date().getFullYear()} {t.footer.copyright}<span>koprumezun.com</span></div></footer>
       <DemoModal open={demoOpen} onClose={() => setDemoOpen(false)} language={language} openerRef={openerRef} />
     </div>
   );
