@@ -17,7 +17,6 @@ export const copy = {
     trust: {
       eyebrow: 'KöprüMezun’a güvenen kurumlar',
       title: 'Farklı coğrafyalardan yükseköğretim toplulukları',
-      note: 'Kurum logoları ilgili kurumların kimliğini belirtmek amacıyla kullanılmıştır.',
     },
     problems: {
       eyebrow: 'Dağınık operasyonlardan ölçülebilir ilişkilere', title: 'Kurumların yaşadığı beş temel problemi tek bir çalışma alanında çözün.',
@@ -36,7 +35,7 @@ export const copy = {
         { title: 'Topluluk ve iletişim', problem: 'Haberler, duyurular ve mezun bağlantıları farklı kanallarda kaybolur.', flow: 'Mezun ve öğrenci profilleri; üye dizini ve filtreler; haber akışı, gönderi, yorum, grup, mesaj, bildirim; segmentli e-posta, listeler, şablonlar ve otomatik akışlar.', result: 'Doğru topluluğa doğru kanaldan ulaşın; etkileşimi tek yerde görün.', image: '/product/email-template-gallery.png' },
         { title: 'Mentorluk ve kariyer', problem: 'Eşleştirme, takip ve kariyer fırsatları tablolarla yönetildiğinde ölçeklenmez.', flow: 'Mentor profilleri, konu bazlı mentor bulma, mentorluk talepleri ve yönetim paneli; iş ve staj ilanları, başvurular ve ilan sahibi panoları.', result: 'Mezun uzmanlığını öğrenci gelişimine ve kariyer fırsatlarına dönüştürün.', image: '/product/jobs.png' },
         { title: 'Etkinlik ve gönüllülük', problem: 'Kayıt, katılım, bilet, görev ve etki verisi birbirinden kopuk kalır.', flow: 'Ücretsiz/ücretli biletler, kontenjan ve bekleme listesi; QR check-in, oturumlar, iadeler, anketler ve sonuç takibi; gönüllülük başvurusu, görevlendirme, saat, safeguarding, sertifika, chapter ve elçi yönetimi.', result: 'Operasyonu azaltın; katılımı ve sosyal etkiyi kanıtlanabilir hale getirin.', image: '/product/home-dashboard.png' },
-        { title: 'Bağış ve kurumsal gelişim', problem: 'Bağış çağrıları ile mezun ilişkisi arasında süreklilik kurulamaz.', flow: 'Bağış kampanyaları, halka açık kampanya sayfaları, ödeme sağlayıcısı bağlantıları; mezun işletmeleri dizini ve ayrıcalıklar.', result: 'Kurumsal gelişim çalışmalarını topluluk profilleri ve iletişim akışlarıyla bağlayın.', image: '/product/fundraising.png' },
+        { title: 'Bağış ve kurumsal gelişim', highlight: 'Öne çıkan bağış yönetimi', problem: 'Bağış çağrıları ile mezun ilişkisi arasında süreklilik kurulamaz.', flow: 'Bağış kampanyaları, halka açık kampanya sayfaları, ödeme sağlayıcısı bağlantıları; mezun işletmeleri dizini ve ayrıcalıklar.', result: 'Kurumsal gelişim çalışmalarını topluluk profilleri ve iletişim akışlarıyla bağlayın.', image: '/product/fundraising.png' },
         { title: 'Yönetim, raporlama ve entegrasyon', problem: 'Yönetim ekipleri veri kalitesi, yetki ve etki görünürlüğünü ayrı sistemlerde takip eder.', flow: 'Kullanıcı onayı ve yaşam döngüsü, roller, özel profil alanları, audit log, raporlar, etkileşim analitiği ve CASE metrikleri; CSV, SFTP, REST, Salesforce, harici API ve imzalı webhooklar.', result: 'Satın alma, IT ve iş birimlerine ortak, denetlenebilir bir işletim çerçevesi sunun.', image: '/product/admin-analytics.png' },
       ],
     },
@@ -129,7 +128,7 @@ export const copy = {
       primary: 'Request a live demo', secondary: 'Explore the platform', proof: 'Real product screen · Anonymised demo environment',
       points: ['Institution-specific brand and domain', 'English and Turkish experience', 'Modular rollout and controlled data migration'],
     },
-    trust: { eyebrow: 'Institutions that trust KöprüMezun', title: 'Higher-education communities across geographies', note: 'Institutional logos are used to identify the respective organisations.' },
+    trust: { eyebrow: 'Institutions that trust KöprüMezun', title: 'Higher-education communities across geographies' },
     problems: {
       eyebrow: 'From fragmented operations to measurable relationships', title: 'Solve five recurring institutional problems in one workspace.',
       items: [
@@ -147,7 +146,7 @@ export const copy = {
         { title: 'Community & communications', problem: 'News, announcements and alumni connections disappear across disconnected channels.', flow: 'Alumni and student profiles; member directory and advanced filters; feed, posts, comments, groups, messaging and notifications; segmented email, lists, templates and automated flows.', result: 'Reach the right community through the right channel and see engagement in one place.', image: '/product/email-template-gallery.png' },
         { title: 'Mentoring & careers', problem: 'Matching, follow-up and career opportunities do not scale in spreadsheets.', flow: 'Mentor profiles, topic-based discovery, mentoring requests and admin workspace; jobs and internships, applications and employer dashboards.', result: 'Convert alumni expertise into student development and career opportunity.', image: '/product/jobs.png' },
         { title: 'Events & volunteering', problem: 'Registration, attendance, ticketing, assignments and impact data remain disconnected.', flow: 'Free/paid tickets, capacity and waitlists; QR check-in, sessions, refunds, surveys and outcomes; volunteering applications, assignments, hours, safeguarding, certificates, chapters and ambassadors.', result: 'Reduce operational effort while making participation and social impact demonstrable.', image: '/product/home-dashboard.png' },
-        { title: 'Fundraising & advancement', problem: 'Fundraising calls and alumni relationships lack continuity.', flow: 'Fundraising campaigns, public campaign pages and payment-provider connections; alumni business directory and perks.', result: 'Connect advancement activity to community profiles and communication flows.', image: '/product/fundraising.png' },
+        { title: 'Fundraising & advancement', highlight: 'Featured fundraising capability', problem: 'Fundraising calls and alumni relationships lack continuity.', flow: 'Fundraising campaigns, public campaign pages and payment-provider connections; alumni business directory and perks.', result: 'Connect advancement activity to community profiles and communication flows.', image: '/product/fundraising.png' },
         { title: 'Administration, reporting & integration', problem: 'Leaders track data quality, permissions and impact across separate systems.', flow: 'User approval and lifecycle, roles, custom profile fields, audit logs, reports, engagement analytics and CASE metrics; CSV, SFTP, REST, Salesforce, external APIs and signed webhooks.', result: 'Give procurement, IT and business teams a shared and auditable operating framework.', image: '/product/admin-analytics.png' },
       ],
     },

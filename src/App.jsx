@@ -12,10 +12,10 @@ const audienceIcons = [Users, BriefcaseBusiness, Landmark, LockKeyhole, Graduati
 
 function SectionHeading({ eyebrow, title, intro, light = false }) {
   return (
-    <div className="section-heading">
+    <div className={`section-heading ${light ? 'section-heading-light' : ''}`}>
       <p className={`eyebrow ${light ? 'eyebrow-light' : ''}`}>{eyebrow}</p>
-      <h2 className={light ? 'text-white' : ''}>{title}</h2>
-      {intro && <p className={light ? 'text-slate-300' : 'text-slate-600'}>{intro}</p>}
+      <h2>{title}</h2>
+      {intro && <p>{intro}</p>}
     </div>
   );
 }
@@ -205,7 +205,7 @@ function App() {
 
         <section className="trust-section" aria-labelledby="trust-title">
           <div className="container">
-            <div className="trust-heading"><div><p className="eyebrow">{t.trust.eyebrow}</p><h2 id="trust-title">{t.trust.title}</h2></div><p>{t.trust.note}</p></div>
+            <div className="trust-heading"><div><p className="eyebrow">{t.trust.eyebrow}</p><h2 id="trust-title">{t.trust.title}</h2></div></div>
             <div className="logo-row">{institutions.map((institution) => <div className="institution" key={institution.name}><img src={institution.logo} alt={`${institution.name} logo`} /><span>{institution.name}</span></div>)}</div>
           </div>
         </section>
@@ -221,8 +221,8 @@ function App() {
           <div className="container">
             <SectionHeading eyebrow={t.modules.eyebrow} title={t.modules.title} intro={t.modules.intro} light />
             <div className="module-stack">{t.modules.groups.map((group, index) => (
-              <article className={`module-row ${index % 2 ? 'module-row-reverse' : ''}`} key={group.title}>
-                <div className="module-copy"><span className="module-index">0{index + 1}</span><h3>{group.title}</h3>
+              <article className={`module-row ${index % 2 ? 'module-row-reverse' : ''} ${group.highlight ? 'module-row-featured' : ''}`} key={group.title}>
+                <div className="module-copy">{group.highlight && <span className="module-highlight"><HeartHandshake size={17} aria-hidden="true" />{group.highlight}</span>}<span className="module-index">0{index + 1}</span><h3>{group.title}</h3>
                   <dl><div><dt>{t.modules.labels.problem}</dt><dd>{group.problem}</dd></div><div><dt>{t.modules.labels.flow}</dt><dd>{group.flow}</dd></div><div className="result"><dt>{t.modules.labels.result}</dt><dd>{group.result}</dd></div></dl>
                 </div>
                 <figure className="product-frame"><div className="browser-bar"><span /><span /><span /></div><img src={group.image} alt={`${group.title} — ${t.modules.labels.screenshot}`} loading="lazy" /><figcaption>{t.modules.labels.screenshot}</figcaption></figure>
