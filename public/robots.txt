@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.koprumezun.com/sitemap.xml
+Sitemap: https://koprumezun.com/sitemap.xml

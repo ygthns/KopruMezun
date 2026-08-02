@@ -2,83 +2,40 @@
 <html lang="tr">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>KöprüMezun | Topluluğunuzu bağlayın, geleceği birlikte kurun.</title>
-    <meta
-      name="description"
-      content="KöprüMezun, Türkiye’de geliştirilen ve Türkiye’de barındırılan mezun ağı & mentorluk platformudur. Topluluğunuzu güvenle yönetin, veriler ülke sınırlarında kalsın."
-    />
-    <meta name="keywords" content="mezun ağı, mentorluk platformu, alumni yönetimi, Türkiye, KVKK, KöprüMezun" />
+    <title>KöprüMezun | Üniversiteler için mezun ilişkileri platformu</title>
+    <meta name="description" content="Mezun ilişkileri, kariyer, mentorluk, etkinlik, bağış, gönüllülük ve raporlamayı kurumunuza özel tek portalda yönetin." />
+    <meta name="keywords" content="mezun ilişkileri platformu, alumni engagement, üniversite, mentorluk, kariyer merkezi, etkinlik yönetimi" />
     <meta name="author" content="KöprüMezun" />
-    <link rel="canonical" href="https://www.koprumezun.com/" />
+    <link rel="canonical" href="https://koprumezun.com/" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="KöprüMezun | Topluluğunuzu bağlayın, geleceği birlikte kurun." />
-    <meta
-      property="og:description"
-      content="Türkiye’nin ilk yerli mezun ağı ve mentorluk platformu. Verileriniz Türkiye sınırları içinde, KVKK’ya uyumlu."
-    />
-    <meta property="og:url" content="https://www.koprumezun.com/" />
-    <meta property="og:image" content="https://www.koprumezun.com/og-image.png" />
+    <meta property="og:locale" content="tr_TR" />
+    <meta property="og:title" content="KöprüMezun | Üniversiteler için mezun ilişkileri platformu" />
+    <meta property="og:description" content="Mezun ilişkileri, kariyer, mentorluk, etkinlik, bağış, gönüllülük ve raporlamayı kurumunuza özel tek portalda yönetin." />
+    <meta property="og:url" content="https://koprumezun.com/" />
+    <meta property="og:image" content="https://koprumezun.com/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="KöprüMezun | Topluluğunuzu bağlayın, geleceği birlikte kurun." />
-    <meta
-      name="twitter:description"
-      content="Yerli geliştirilen mezun ve mentorluk platformu. KöprüMezun ile verileriniz Türkiye’de güvende."
-    />
-    <meta name="twitter:image" content="https://www.koprumezun.com/og-image.png" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="twitter:title" content="KöprüMezun | Üniversiteler için mezun ilişkileri platformu" />
+    <meta name="twitter:description" content="Mezun ilişkileri, kariyer, mentorluk, etkinlik, bağış, gönüllülük ve raporlamayı kurumunuza özel tek portalda yönetin." />
+    <meta name="twitter:image" content="https://koprumezun.com/og.png" />
+    <meta name="theme-color" content="#07162d" />
   </head>
   <body>
-    <form
-      name="demo-request"
-      method="POST"
-      action="/"
-      netlify
-      data-netlify="true"
-      netlify-honeypot="bot-field"
-      hidden
-      aria-hidden="true"
-    >
+    <form name="demo-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden aria-hidden="true">
       <input type="hidden" name="form-name" value="demo-request" />
-      <input type="hidden" name="language" value="" />
-      <p>
-        <label>
-          Ad Soyad / Full Name
-          <input type="text" name="name" />
-        </label>
-      </p>
-      <p>
-        <label>
-          Kurum / Organisation
-          <input type="text" name="organization" />
-        </label>
-      </p>
-      <p>
-        <label>
-          E-posta / Email
-          <input type="email" name="email" />
-        </label>
-      </p>
-      <p>
-        <label>
-          Segment
-          <input type="text" name="segment" />
-        </label>
-      </p>
-      <p>
-        <label>
-          İhtiyaç / Need
-          <textarea name="need"></textarea>
-        </label>
-      </p>
-      <p style="display: none;">
-        <label>
-          Bot field
-          <input name="bot-field" />
-        </label>
-      </p>
+      <input type="hidden" name="language" />
+      <input type="text" name="name" />
+      <input type="text" name="organization" />
+      <input type="email" name="email" />
+      <input type="text" name="role" />
+      <input type="text" name="community-size" />
+      <input type="text" name="priority-modules" />
+      <input type="text" name="delivery-model" />
+      <textarea name="need"></textarea>
+      <input name="bot-field" />
     </form>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
