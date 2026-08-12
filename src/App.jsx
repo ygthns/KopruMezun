@@ -148,6 +148,17 @@ function App() {
     setMeta('meta[name="twitter:description"]', t.meta.description);
   }, [language, t]);
 
+  useEffect(() => {
+    const scrollToHash = () => {
+      if (!window.location.hash) return;
+      const target = document.getElementById(decodeURIComponent(window.location.hash.slice(1)));
+      if (target) window.requestAnimationFrame(() => target.scrollIntoView({ block: 'start' }));
+    };
+    scrollToHash();
+    window.addEventListener('hashchange', scrollToHash);
+    return () => window.removeEventListener('hashchange', scrollToHash);
+  }, []);
+
   const openDemo = (event) => {
     openerRef.current = event?.currentTarget || document.activeElement;
     setMenuOpen(false);
@@ -166,7 +177,7 @@ function App() {
         <div className="nav-wrap">
           <a className="brand" href="#top" aria-label="KöprüMezun">
             <span className="brand-mark" aria-hidden="true"><img src="/logos/kopruyazisizbeyazlogo.svg" alt="" /></span>
-            <span>Köprü</span><strong>Mezun</strong>
+            <span className="brand-name"><span>Köprü</span><strong>Mezun</strong></span>
           </a>
           <nav className="desktop-nav" aria-label={language === 'tr' ? 'Ana navigasyon' : 'Primary navigation'}>
             {navItems.map(([href, label]) => <a key={href} href={href}>{label}</a>)}
@@ -221,14 +232,17 @@ function App() {
         <section id="modules" className="section modules-section">
           <div className="container">
             <SectionHeading eyebrow={t.modules.eyebrow} title={t.modules.title} intro={t.modules.intro} light />
-            <div className="module-stack">{t.modules.groups.map((group, index) => (
-              <article className={`module-row ${index % 2 ? 'module-row-reverse' : ''} ${group.highlight ? 'module-row-featured' : ''}`} key={group.title}>
-                <div className="module-copy">{group.highlight && <span className="module-highlight"><HeartHandshake size={17} aria-hidden="true" />{group.highlight}</span>}<span className="module-index">0{index + 1}</span><h3>{group.title}</h3>
-                  <dl><div><dt>{t.modules.labels.problem}</dt><dd>{group.problem}</dd></div><div><dt>{t.modules.labels.flow}</dt><dd>{group.flow}</dd></div><div className="result"><dt>{t.modules.labels.result}</dt><dd>{group.result}</dd></div></dl>
-                </div>
-                <figure className="product-frame"><div className="browser-bar"><span /><span /><span /></div><img src={group.image} alt={`${group.title} — ${t.modules.labels.screenshot}`} loading="lazy" /><figcaption>{t.modules.labels.screenshot}</figcaption></figure>
-              </article>
-            ))}</div>
+            <div className="module-stack">{t.modules.groups.map((group, index) => {
+              const image = language === 'tr' && group.imageTr ? group.imageTr : group.image;
+              return (
+                <article className={`module-row ${index % 2 ? 'module-row-reverse' : ''} ${group.highlight ? 'module-row-featured' : ''}`} key={group.title}>
+                  <div className="module-copy">{group.highlight && <span className="module-highlight"><HeartHandshake size={17} aria-hidden="true" />{group.highlight}</span>}<span className="module-index">0{index + 1}</span><h3>{group.title}</h3>
+                    <dl><div><dt>{t.modules.labels.problem}</dt><dd>{group.problem}</dd></div><div><dt>{t.modules.labels.flow}</dt><dd>{group.flow}</dd></div><div className="result"><dt>{t.modules.labels.result}</dt><dd>{group.result}</dd></div></dl>
+                  </div>
+                  <figure className="product-frame"><div className="browser-bar"><span /><span /><span /></div><img src={image} alt={`${group.title} — ${t.modules.labels.screenshot}`} loading="lazy" /><figcaption>{t.modules.labels.screenshot}</figcaption></figure>
+                </article>
+              );
+            })}</div>
           </div>
         </section>
 
@@ -280,12 +294,38 @@ function App() {
           <div className="container cta-inner"><div><p className="eyebrow eyebrow-light">{t.nav.cta}</p><h2>{language === 'tr' ? 'Kurumunuzun mezun deneyimini birlikte tasarlayalım.' : 'Let’s design your institution’s alumni experience together.'}</h2></div><div><button type="button" className="button button-accent" onClick={openDemo}>{t.pricing.cta}<ArrowRight size={18} aria-hidden="true" /></button><a className="text-link" href="/brochure.pdf" download><Download size={18} aria-hidden="true" />{t.footer.brochure}</a></div></div>
         </section>
 
-        <section id="privacy" className="privacy-section">
-          <div className="container privacy-inner"><Mail aria-hidden="true" /><div><p className="eyebrow">{t.privacy.eyebrow}</p><h2>{t.privacy.title}</h2><p>{t.privacy.body}</p></div></div>
+        <section id="privacy" className="privacy-section" aria-labelledby="privacy-title">
+          <div className="container">
+            <header className="privacy-hero">
+              <span className="privacy-icon"><Mail aria-hidden="true" /></span>
+              <div><p className="eyebrow">{t.privacy.eyebrow}</p><h2 id="privacy-title">{t.privacy.title}</h2><p>{t.privacy.intro}</p></div>
+            </header>
+            <div className="privacy-layout">
+              <aside className="privacy-summary" aria-label={t.privacy.summaryLabel}>
+                <p className="privacy-kicker">{t.privacy.scopeLabel}</p>
+                <strong>{t.privacy.scope}</strong>
+                <dl>
+                  <div><dt>{t.privacy.updatedLabel}</dt><dd>{t.privacy.updated}</dd></div>
+                  <div><dt>{t.privacy.contactLabel}</dt><dd><a href="mailto:info@koprumezun.com">info@koprumezun.com</a></dd></div>
+                </dl>
+                <p>{t.privacy.scopeNote}</p>
+              </aside>
+              <article className="privacy-content">
+                {t.privacy.sections.map((section) => (
+                  <section key={section.title}>
+                    <h3>{section.title}</h3>
+                    {section.paragraphs?.map((paragraph) => <p key={paragraph}>{paragraph}</p>)}
+                    {section.items && <ul>{section.items.map((item) => <li key={item}>{item}</li>)}</ul>}
+                  </section>
+                ))}
+              </article>
+            </div>
+            <p className="privacy-footnote">{t.privacy.footnote}</p>
+          </div>
         </section>
       </main>
 
-      <footer className="site-footer"><div className="container footer-grid"><div><a className="brand footer-brand" href="#top" aria-label="KöprüMezun"><span className="brand-mark" aria-hidden="true"><img src="/logos/kopruyazisizbeyazlogo.svg" alt="" /></span><span>Köprü</span><strong>Mezun</strong></a><p>{t.footer.summary}</p></div><div><h3>{t.footer.product}</h3><a href="#modules">{t.nav.modules}</a><a href="#security">{t.nav.security}</a><a href="#pricing">{t.nav.pricing}</a></div><div><h3>{t.footer.company}</h3><a href="/brochure.pdf" download>{t.footer.brochure}</a><a href="#privacy">{t.footer.privacy}</a><a href="mailto:info@koprumezun.com">info@koprumezun.com</a></div></div><div className="container footer-bottom">© {new Date().getFullYear()} {t.footer.copyright}<span>koprumezun.com</span></div></footer>
+      <footer className="site-footer"><div className="container footer-grid"><div><a className="brand footer-brand" href="#top" aria-label="KöprüMezun"><span className="brand-mark" aria-hidden="true"><img src="/logos/kopruyazisizbeyazlogo.svg" alt="" /></span><span className="brand-name"><span>Köprü</span><strong>Mezun</strong></span></a><p>{t.footer.summary}</p></div><div><h3>{t.footer.product}</h3><a href="#modules">{t.nav.modules}</a><a href="#security">{t.nav.security}</a><a href="#pricing">{t.nav.pricing}</a></div><div><h3>{t.footer.company}</h3><a href="/brochure.pdf" download>{t.footer.brochure}</a><a href="#privacy">{t.footer.privacy}</a><a href="mailto:info@koprumezun.com">info@koprumezun.com</a></div></div><div className="container footer-bottom">© {new Date().getFullYear()} {t.footer.copyright}<span>koprumezun.com</span></div></footer>
       <DemoModal open={demoOpen} onClose={() => setDemoOpen(false)} language={language} openerRef={openerRef} />
     </div>
   );
