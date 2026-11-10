@@ -6,6 +6,7 @@ import {
   Network, ShieldCheck, Sparkles, Users, X,
 } from 'lucide-react';
 import { copy, institutions } from './content';
+import { GuideTeaser } from './Guide';
 
 const iconSet = [Database, BarChart3, HeartHandshake, Network, ShieldCheck];
 const audienceIcons = [Users, BriefcaseBusiness, Landmark, LockKeyhole, GraduationCap];
@@ -129,14 +130,14 @@ function DemoModal({ open, onClose, language, openerRef }) {
 }
 
 function App() {
-  const [language, setLanguage] = useState(() => localStorage.getItem('koprumezun-language') || 'tr');
+  const [language, setLanguage] = useState(() => { try { return typeof localStorage !== 'undefined' && localStorage.getItem('koprumezun-language') === 'en' ? 'en' : 'tr'; } catch { return 'tr'; } });
   const [menuOpen, setMenuOpen] = useState(false);
   const [demoOpen, setDemoOpen] = useState(false);
   const openerRef = useRef(null);
   const t = copy[language];
 
   useEffect(() => {
-    localStorage.setItem('koprumezun-language', language);
+    try { localStorage.setItem('koprumezun-language', language); } catch { /* Language still works when storage is unavailable. */ }
     document.documentElement.lang = language;
     document.title = t.meta.title;
     const setMeta = (selector, value) => document.querySelector(selector)?.setAttribute('content', value);
@@ -167,7 +168,7 @@ function App() {
 
   const navItems = [
     ['#product', t.nav.product], ['#solutions', t.nav.solutions], ['#modules', t.nav.modules],
-    ['#security', t.nav.security], ['#pricing', t.nav.pricing], ['#faq', t.nav.faq],
+    ['/rehber/', language === 'tr' ? 'Rehber' : 'Guides (TR)'], ['#security', t.nav.security], ['#pricing', t.nav.pricing], ['#faq', t.nav.faq],
   ];
 
   return (
@@ -290,9 +291,11 @@ function App() {
           <div className="container faq-grid"><SectionHeading eyebrow={t.faq.eyebrow} title={t.faq.title} /><div className="faq-list">{t.faq.items.map(([question, answer]) => <details key={question}><summary>{question}<ChevronDown aria-hidden="true" /></summary><p>{answer}</p></details>)}</div></div>
         </section>
 
-        <section className="cta-section">
+        <section id="contact" className="cta-section">
           <div className="container cta-inner"><div><p className="eyebrow eyebrow-light">{t.nav.cta}</p><h2>{language === 'tr' ? 'Kurumunuzun mezun deneyimini birlikte tasarlayalım.' : 'Let’s design your institution’s alumni experience together.'}</h2></div><div><button type="button" className="button button-accent" onClick={openDemo}>{t.pricing.cta}<ArrowRight size={18} aria-hidden="true" /></button><a className="text-link" href="/brochure.pdf" download><Download size={18} aria-hidden="true" />{t.footer.brochure}</a></div></div>
         </section>
+
+        <GuideTeaser language={language} />
 
         <section id="privacy" className="privacy-section" aria-labelledby="privacy-title">
           <div className="container">
@@ -325,7 +328,7 @@ function App() {
         </section>
       </main>
 
-      <footer className="site-footer"><div className="container footer-grid"><div><a className="brand footer-brand" href="#top" aria-label="KöprüMezun"><span className="brand-mark" aria-hidden="true"><img src="/logos/kopruyazisizbeyazlogo.svg" alt="" /></span><span className="brand-name"><span>Köprü</span><strong>Mezun</strong></span></a><p>{t.footer.summary}</p></div><div><h3>{t.footer.product}</h3><a href="#modules">{t.nav.modules}</a><a href="#security">{t.nav.security}</a><a href="#pricing">{t.nav.pricing}</a></div><div><h3>{t.footer.company}</h3><a href="/brochure.pdf" download>{t.footer.brochure}</a><a href="#privacy">{t.footer.privacy}</a><a href="mailto:info@koprumezun.com">info@koprumezun.com</a></div></div><div className="container footer-bottom">© {new Date().getFullYear()} {t.footer.copyright}<span>koprumezun.com</span></div></footer>
+      <footer className="site-footer"><div className="container footer-grid"><div><a className="brand footer-brand" href="#top" aria-label="KöprüMezun"><span className="brand-mark" aria-hidden="true"><img src="/logos/kopruyazisizbeyazlogo.svg" alt="" /></span><span className="brand-name"><span>Köprü</span><strong>Mezun</strong></span></a><p>{t.footer.summary}</p></div><div><h3>{t.footer.product}</h3><a href="#modules">{t.nav.modules}</a><a href="#security">{t.nav.security}</a><a href="#pricing">{t.nav.pricing}</a></div><div><h3>{t.footer.company}</h3><a href="/brochure.pdf" download>{t.footer.brochure}</a><a href="/rehber/">Köprü Rehber</a><a href="#privacy">{t.footer.privacy}</a><a href="mailto:info@koprumezun.com">info@koprumezun.com</a></div></div><div className="container footer-bottom">© {new Date().getFullYear()} {t.footer.copyright}<span>koprumezun.com</span></div></footer>
       <DemoModal open={demoOpen} onClose={() => setDemoOpen(false)} language={language} openerRef={openerRef} />
     </div>
   );

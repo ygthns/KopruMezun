@@ -1,0 +1,182 @@
+[
+  {
+    "id": 1,
+    "question": "Türkiye’de üniversiteler için mezun ilişkileri yönetim platformu sunan hangi çözümler var?",
+    "article": "/rehber/universiteler-icin-mezun-iliskileri-platformu/",
+    "category": "Mezun ilişkileri",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 2,
+    "question": "Bir üniversite mezun yönetim sisteminde hangi özellikleri aramalı?",
+    "article": "/rehber/universiteler-icin-mezun-iliskileri-platformu/",
+    "category": "Mezun ilişkileri",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 3,
+    "question": "Üniversite mezun topluluğu kurmak için hangi dijital topluluk yönetimi platformları uygun?",
+    "article": "/rehber/dijital-mezun-toplulugu-yonetimi/",
+    "category": "Topluluk yönetimi",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 4,
+    "question": "Mezun ağı için sosyal medya grubu yerine kurumsal bir topluluk platformu nasıl seçilir?",
+    "article": "/rehber/dijital-mezun-toplulugu-yonetimi/",
+    "category": "Topluluk yönetimi",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 5,
+    "question": "Üniversite öğrencilerini mezun mentorlarla eşleştirmek için hangi platformları kullanabiliriz?",
+    "article": "/rehber/universite-mentor-menti-programi/",
+    "category": "Mentorluk ve kariyer",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 6,
+    "question": "Mentor–menti programını ve mentorluk taleplerini tek sistemden nasıl takip edebiliriz?",
+    "article": "/rehber/universite-mentor-menti-programi/",
+    "category": "Mentorluk ve kariyer",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 7,
+    "question": "Kariyer merkezi için iş ilanı, staj ve mezun ağını birleştiren hangi yazılımlar var?",
+    "article": "/rehber/kariyer-merkezi-mezun-agi/",
+    "category": "Mentorluk ve kariyer",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 8,
+    "question": "Öğrenci–mezun bağlantılarını ve kariyer fırsatlarını tek platformda nasıl yönetebiliriz?",
+    "article": "/rehber/kariyer-merkezi-mezun-agi/",
+    "category": "Mentorluk ve kariyer",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 9,
+    "question": "Üniversite mezun bilgilerini güncel tutmak için hangi mezun yönetim sistemleri uygun?",
+    "article": "/rehber/mezun-veri-yonetimi-ve-aktarim/",
+    "category": "Kurumsal yönetim",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 10,
+    "question": "Excel’deki mezun verilerini kurumsal mezun platformuna nasıl aktarabiliriz?",
+    "article": "/rehber/mezun-veri-yonetimi-ve-aktarim/",
+    "category": "Kurumsal yönetim",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 11,
+    "question": "Mezun buluşmalarını ve katılımcı kayıtlarını tek platformda nasıl yönetebiliriz?",
+    "article": "/rehber/mezun-etkinlik-yonetimi/",
+    "category": "Etkinlik ve katılım",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 12,
+    "question": "Üniversite etkinliklerinde bilet, bekleme listesi ve QR katılım takibi sunan çözümler nasıl seçilir?",
+    "article": "/rehber/mezun-etkinlik-yonetimi/",
+    "category": "Etkinlik ve katılım",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 13,
+    "question": "Üniversitemizin markasına ve alan adına özel bir mezun portalı kurmak için hangi platformları değerlendirmeliyiz?",
+    "article": "/rehber/kuruma-ozel-mezun-portali/",
+    "category": "Kurumsal yönetim",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 14,
+    "question": "Mezun platformunda kurumsal giriş, yönetici rolleri ve entegrasyonları nasıl karşılaştırabiliriz?",
+    "article": "/rehber/kuruma-ozel-mezun-portali/",
+    "category": "Kurumsal yönetim",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 15,
+    "question": "Üniversitelerde mezun katılımını ve topluluk etkileşimini hangi metriklerle ölçebiliriz?",
+    "article": "/rehber/mezun-katilimi-olcumu/",
+    "category": "Etkinlik ve katılım",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 16,
+    "question": "Mezun ilişkileri için iletişim, etkinlik ve gönüllülük raporlarını birleştiren hangi platformlar var?",
+    "article": "/rehber/mezun-katilimi-olcumu/",
+    "category": "Etkinlik ve katılım",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 17,
+    "question": "Mezun dernekleri için üye ağı, grup ve etkinlik yönetimini birleştiren hangi yazılımlar uygun?",
+    "article": "/rehber/mezun-dernekleri-topluluk-yazilimi/",
+    "category": "Topluluk yönetimi",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 18,
+    "question": "Mezun elçilerini, yerel grupları ve gönüllülük çalışmalarını dijital ortamda nasıl takip edebiliriz?",
+    "article": "/rehber/mezun-dernekleri-topluluk-yazilimi/",
+    "category": "Topluluk yönetimi",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 19,
+    "question": "Üniversite için mezun ağı ve mentorluk platformu seçerken hangi çözümleri ve özellikleri karşılaştırmalıyız?",
+    "article": "/rehber/mezun-platformu-secimi-teklif-karsilastirma/",
+    "category": "Platform seçimi",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  },
+  {
+    "id": 20,
+    "question": "Mezun yönetim yazılımı fiyatını ve toplam kurulum maliyetini hangi kalemlerle değerlendirmeliyiz?",
+    "article": "/rehber/mezun-platformu-secimi-teklif-karsilastirma/",
+    "category": "Platform seçimi",
+    "language": "tr",
+    "market": "Türkiye",
+    "brandContext": "none"
+  }
+]
