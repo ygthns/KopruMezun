@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ArrowDown, ArrowRight, BarChart3, BriefcaseBusiness, Building2, Check,
   CheckCircle2, ChevronDown, Database, Download, Globe2, GraduationCap,
@@ -21,119 +21,9 @@ function SectionHeading({ eyebrow, title, intro, light = false }) {
   );
 }
 
-function DemoModal({ open, onClose, language, openerRef }) {
-  const t = copy[language].form;
-  const dialogRef = useRef(null);
-  const [status, setStatus] = useState('idle');
-  const [error, setError] = useState('');
-
-  useEffect(() => {
-    if (!open) return undefined;
-    setStatus('idle');
-    setError('');
-    const dialog = dialogRef.current;
-    const opener = openerRef.current;
-    const focusable = () => [...dialog.querySelectorAll('button, input, select, textarea, a[href]')]
-      .filter((element) => !element.disabled && element.getAttribute('aria-hidden') !== 'true');
-    focusable()[0]?.focus();
-    document.body.style.overflow = 'hidden';
-
-    const handleKeyDown = (event) => {
-      if (event.key === 'Escape') onClose();
-      if (event.key !== 'Tab') return;
-      const items = focusable();
-      if (!items.length) return;
-      const first = items[0];
-      const last = items[items.length - 1];
-      if (event.shiftKey && document.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && document.activeElement === last) {
-        event.preventDefault();
-        first.focus();
-      }
-    };
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-      document.body.style.overflow = '';
-      opener?.focus();
-    };
-  }, [open, onClose, openerRef]);
-
-  if (!open) return null;
-
-  const submit = async (event) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    setStatus('sending');
-    setError('');
-    const params = new URLSearchParams();
-    for (const [key, value] of formData.entries()) params.append(key, value);
-    try {
-      const response = await fetch('/__forms.html', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: params.toString(),
-      });
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      setStatus('success');
-    } catch {
-      setStatus('error');
-      setError(t.error);
-    }
-  };
-
-  return (
-    <div className="modal-backdrop" onMouseDown={(event) => event.target === event.currentTarget && onClose()}>
-      <div ref={dialogRef} className="modal-panel" role="dialog" aria-modal="true" aria-labelledby="demo-title">
-        <button type="button" className="modal-close" onClick={onClose} aria-label={t.close}>
-          <X size={20} aria-hidden="true" />
-        </button>
-        {status === 'success' ? (
-          <div className="success-state" aria-live="polite">
-            <CheckCircle2 size={48} aria-hidden="true" />
-            <h2 id="demo-title">{t.successTitle}</h2>
-            <p>{t.successBody}</p>
-            <button type="button" className="button button-primary" onClick={onClose}>{t.close}</button>
-          </div>
-        ) : (
-          <>
-            <p className="eyebrow">{copy[language].nav.cta}</p>
-            <h2 id="demo-title">{t.title}</h2>
-            <p className="modal-intro">{t.body}</p>
-            <form name="demo-request" method="POST" data-netlify="true" netlify-honeypot="bot-field" onSubmit={submit}>
-              <input type="hidden" name="form-name" value="demo-request" />
-              <input type="hidden" name="subject" value={t.subject} />
-              <input type="hidden" name="language" value={language} />
-              <input className="hidden" name="bot-field" tabIndex="-1" autoComplete="off" />
-              <div className="form-grid">
-                <label>{t.fields.name}<span aria-label={t.required}>*</span><input name="name" type="text" required autoComplete="name" /></label>
-                <label>{t.fields.organization}<span aria-label={t.required}>*</span><input name="organization" type="text" required autoComplete="organization" /></label>
-                <label>{t.fields.email}<span aria-label={t.required}>*</span><input name="email" type="email" required autoComplete="email" /></label>
-                <label>{t.fields.size}<span aria-label={t.required}>*</span>
-                  <select name="community-size" required defaultValue=""><option value="" disabled>—</option>{t.sizes.map((item) => <option key={item}>{item}</option>)}</select>
-                </label>
-              </div>
-              <label>{t.fields.need}<span className="optional-label">{t.optional}</span><textarea name="need" rows="3" /></label>
-              <p className="form-privacy">{t.consent} <a href="#privacy" onClick={onClose}>{t.privacy}</a></p>
-              {status === 'error' && <p className="form-error" role="alert">{error}</p>}
-              <button className="button button-primary button-wide" type="submit" disabled={status === 'sending'}>
-                {status === 'sending' ? t.sending : t.submit}<ArrowRight size={18} aria-hidden="true" />
-              </button>
-            </form>
-          </>
-        )}
-      </div>
-    </div>
-  );
-}
-
 function App() {
   const [language, setLanguage] = useState(() => { try { return typeof localStorage !== 'undefined' && localStorage.getItem('koprumezun-language') === 'en' ? 'en' : 'tr'; } catch { return 'tr'; } });
   const [menuOpen, setMenuOpen] = useState(false);
-  const [demoOpen, setDemoOpen] = useState(false);
-  const openerRef = useRef(null);
   const t = copy[language];
 
   useEffect(() => {
@@ -161,9 +51,8 @@ function App() {
   }, []);
 
   const openDemo = (event) => {
-    openerRef.current = event?.currentTarget || document.activeElement;
     setMenuOpen(false);
-    setDemoOpen(true);
+    window.dispatchEvent(new CustomEvent('kopru:contact-open', { detail: { opener: event?.currentTarget } }));
   };
 
   const navItems = [
@@ -329,7 +218,6 @@ function App() {
       </main>
 
       <footer className="site-footer"><div className="container footer-grid"><div><a className="brand footer-brand" href="#top" aria-label="KöprüMezun"><span className="brand-mark" aria-hidden="true"><img src="/logos/kopruyazisizbeyazlogo.svg" alt="" /></span><span className="brand-name"><span>Köprü</span><strong>Mezun</strong></span></a><p>{t.footer.summary}</p></div><div><h3>{t.footer.product}</h3><a href="#modules">{t.nav.modules}</a><a href="#security">{t.nav.security}</a><a href="#pricing">{t.nav.pricing}</a></div><div><h3>{t.footer.company}</h3><a href="/brochure.pdf" download>{t.footer.brochure}</a><a href="/rehber/">Köprü Rehber</a><a href="#privacy">{t.footer.privacy}</a><a href="mailto:info@koprumezun.com">info@koprumezun.com</a></div></div><div className="container footer-bottom">© {new Date().getFullYear()} {t.footer.copyright}<span>koprumezun.com</span></div></footer>
-      <DemoModal open={demoOpen} onClose={() => setDemoOpen(false)} language={language} openerRef={openerRef} />
     </div>
   );
 }

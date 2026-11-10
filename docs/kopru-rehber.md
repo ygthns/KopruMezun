@@ -20,7 +20,7 @@ KopruPortal deposunu, oturumlu portalları veya kurum verilerini değiştirmez.
 - Mevcut İngilizce ana sayfa geçişi korunur. Rehber için yayımlanmamış İngilizce
   karşılıklar veya hreflang adresleri üretilmez.
 - Mevcut Netlify Forms dosyası ve form gönderim yolu korunur. Testte gerçek talep
-  gönderilmez. Rehber CTA'sı ana sayfadaki demo bölümüne gider.
+  gönderilmez. Rehber CTA'ları sohbet görünümlü başvuru formunu açar; JavaScript yokken ana sayfadaki demo bölümüne gider.
 - Ana sayfa da ilk HTML'de okunabilir. Bilinmeyen adresler `404.html` üzerinden
   gerçek 404 ve noindex alır. Sitemap yalnız 12 public canonical adresi kapsar.
 
