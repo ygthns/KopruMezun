@@ -78,5 +78,205 @@
         ]
       ]
     }
+  },
+  "matching": {
+    "tr": {
+      "slug": "mezun-mentorluk-eslestirme-kriterleri",
+      "title": "Mezun mentorluk programında eşleştirme nasıl yapılır?",
+      "summary": "Mentor ve öğrenci eşleştirmesinde hedef, uygunluk ve kapasiteyi birlikte değerlendirin.",
+      "sections": [
+        [
+          "Başvuru formunu bir görüşme hedefiyle başlatın",
+          "Öğrenci, görüşmenin sonunda neye karar vermek istediğini yazsın. Örneğin iki kariyer yolunu karşılaştırma talebi ile ilk iş görüşmesine hazırlanma talebi farklı deneyim gerektirir. Mentor formunda deneyim alanını, görüşme dilini ve ayda ayırabileceği zamanı sorun."
+        ],
+        [
+          "Zorunlu koşulları ve tercihleri ayırın",
+          "Ortak görüşme dili ve uygun saat aralığını ilk filtre olarak kullanın. Sektör, deneyim düzeyi ve ilgi alanını ikinci aşamada değerlendirin. İki aday aynı ölçüde uygunsa daha az aktif eşleşmesi olan mentoru önerin ve iki taraftan da onay alın."
+        ],
+        [
+          "Eşleşme sonrası ilk görüşmeyi takip edin",
+          "Eşleşme onaylandıktan sonra kısa bir gündem ve ilk görüşme için tarih aralığı gönderin. İlk temas gerçekleşmezse koordinatör tek hatırlatma yapsın ve gerekirse yeniden eşleştirsin. Pilot değerlendirmesinde eşleşme sayısını ve gerçekleşen ilk görüşmeleri ayrı raporlayın."
+        ]
+      ]
+    },
+    "en": {
+      "slug": "alumni-mentoring-match-criteria",
+      "title": "How to match mentors and students in an alumni programme",
+      "summary": "Use goals, availability and mentor capacity to design a practical alumni matching process.",
+      "sections": [
+        [
+          "Ask applicants what they want from one meeting",
+          "Ask students what decision they want to make after the conversation. Comparing two career paths calls for different experience from preparing for a first interview. Ask mentors about their expertise, preferred meeting language and monthly availability."
+        ],
+        [
+          "Separate requirements from preferences",
+          "Filter first by meeting language and overlapping availability. Then compare industry, experience and interests. If two candidates are equally suitable, offer the match to the mentor with fewer active pairings and ask both participants to confirm."
+        ],
+        [
+          "Follow up on the first conversation",
+          "Send a short agenda and a suggested date range after confirmation. If the first conversation falls through, ask the coordinator to send one reminder and arrange a new match if needed. Track confirmed matches and completed first meetings separately."
+        ]
+      ]
+    }
+  },
+  "events": {
+    "tr": {
+      "slug": "mezun-etkinligi-kayit-ve-katilim",
+      "title": "Mezun etkinliği kaydı ve katılım takibi nasıl yapılır?",
+      "summary": "Mezun buluşmaları için davet, bekleme listesi, giriş ve etkinlik sonrası takip akışı.",
+      "sections": [
+        [
+          "Davet grubunu ve kontenjanı tanımlayın",
+          "Önce mezuniyet yılı, bölüm veya şehir gibi bir ölçütle davet grubunu belirleyin. Formda etkinlik adı, tarih, konum ve kontenjanı görünür kılın. Yalnızca katılımı yönetmek için gereken alanları isteyin ve kayıt onayında iptal yolunu gösterin."
+        ],
+        [
+          "Bekleme listesini ve giriş listesini test edin",
+          "Son koltuk dolduğunda yeni başvurunun bekleme listesine gittiğini kontrol edin. Bir katılımcı iptal edince sıradaki kişiye süreli bir davet gönderin. Etkinlik günü görevlileri, gelenleri aynı katılımcı listesinde işaretlesin."
+        ],
+        [
+          "Kayıt ve katılım oranlarını ayrı okuyun",
+          "Gönderilen davet, onaylı kayıt ve gerçekleşen katılım sayılarını ayrı izleyin. Gelmeyenlerin oranını onaylı kayıtlar üzerinden hesaplayın. Etkinlik sonrası katılanlara kısa bir geri bildirim formu gönderip sonraki buluşmanın konusunu açık uçlu bir soruyla test edin."
+        ]
+      ]
+    },
+    "en": {
+      "slug": "alumni-event-registration-attendance",
+      "title": "How to manage alumni event registration and attendance",
+      "summary": "Plan invitations, waitlists, check-in and follow-up for an alumni event.",
+      "sections": [
+        [
+          "Set the audience and capacity",
+          "Start with a defined audience, such as a graduation year, department or city. Show the event name, date, venue and capacity on the form. Ask only for details needed to manage attendance and explain how to cancel in the confirmation."
+        ],
+        [
+          "Test the waitlist and check-in list",
+          "Check that applications go to the waitlist when the last seat is filled. When someone cancels, send the next person a time-limited invitation. On the day, have staff record arrivals against one attendee list."
+        ],
+        [
+          "Read registration and attendance separately",
+          "Track invitations, confirmed bookings and actual attendance separately. Calculate the no-show rate against confirmed bookings. Send a short follow-up survey to attendees and include an open question about the next event topic."
+        ]
+      ]
+    }
+  },
+  "groups": {
+    "tr": {
+      "slug": "mezun-dernegi-uye-gruplari-ve-yetkiler",
+      "title": "Mezun derneğinde üye grupları ve yetkiler nasıl kurulur?",
+      "summary": "Şehir ve dönem grupları için üyelik onayı, yönetici yetkileri ve görev devri planı.",
+      "sections": [
+        [
+          "Grupları gerçek görevler etrafında kurun",
+          "Şehir grubu yerel etkinlikleri, dönem grubu mezuniyet yılına özel duyuruları yönetebilir. Bir grubun amacı, üyelik koşulu ve yöneticisi kayıtlı olsun. Üyelik onayı gereken gruplarda talebi kimin değerlendireceğini gösterin."
+        ],
+        [
+          "Grup yöneticisinin erişimini sınırlandırın",
+          "Grup yöneticisine kendi grubuna duyuru gönderme ve üyelik taleplerini inceleme yetkisi verin. Dernek yönetiminin tüm üye kayıtlarına ilişkin görevlerini ayrı tutun. Rol kontrollerini örnek üye ve yönetici hesaplarıyla sınayın."
+        ],
+        [
+          "Görev devrini dönem bitmeden deneyin",
+          "Yeni yöneticiye devir sırasında önceki yöneticinin erişiminin kapandığını ve duyuru geçmişinin grupta kaldığını kontrol edin. İlk ayda bekleyen üyelik taleplerini ve yanıtsız duyuruları inceleyerek hangi grupların aktif yönetime ihtiyaç duyduğunu belirleyin."
+        ]
+      ]
+    },
+    "en": {
+      "slug": "alumni-association-member-groups-permissions",
+      "title": "How to organise alumni association groups and permissions",
+      "summary": "Define membership approval, administrator permissions and handovers for alumni chapters.",
+      "sections": [
+        [
+          "Give each group a clear purpose",
+          "A city chapter may organise local events while a graduating class manages reunion announcements. Record the purpose, membership criteria and administrator for each group. Where approval is required, make it clear who handles requests."
+        ],
+        [
+          "Limit access to each group administrator’s duties",
+          "Let chapter administrators post announcements and review requests for their own groups. Keep association-wide membership responsibilities separate. Test access with sample member and administrator accounts."
+        ],
+        [
+          "Rehearse a handover before terms end",
+          "When handing over to a new administrator, check that the outgoing administrator loses access and announcements remain available. Review pending requests and unattended announcements after the first month to see which groups need support."
+        ]
+      ]
+    }
+  },
+  "launch": {
+    "tr": {
+      "slug": "kurumsal-markali-mezun-portali-lansman",
+      "title": "Kurumsal markalı mezun portalı nasıl yayına alınır?",
+      "summary": "Üniversiteye özel mezun portalı için alan adı, davet ve yayın öncesi kabul kontrolü.",
+      "sections": [
+        [
+          "İlk sürümün kapsamını belirleyin",
+          "Portalın kurum adı, logosu ve alan adını tanımlayın. İlk sürümde mezunun tamamlayacağı bir işlemi seçin, örneğin davetle hesap açıp profilini güncellemek. Davet e-postası ve destek adresinde aynı kurum kimliğinin kullanıldığını doğrulayın."
+        ],
+        [
+          "Davet akışını örnek hesaplarla deneyin",
+          "Bir test mezunu daveti açsın, hesabını doğrulasın ve telefondan profilini güncellesin. Yanlış veya süresi geçmiş bağlantı için anlaşılır bir kurtarma adımı gösterin. Yönetici, destek talebini hangi ekibin alacağını yayından önce belirlesin."
+        ],
+        [
+          "Yayını küçük bir grupla açın",
+          "İlk davetleri tek bir mezun grubuna gönderin. Kayıt tamamlama, hatalı adresler ve yardım isteklerini izleyin. Sonraki grubu davet etmeden önce ilk grubun en sık takıldığı adımı düzeltin."
+        ]
+      ]
+    },
+    "en": {
+      "slug": "branded-university-alumni-portal-launch",
+      "title": "How to launch a branded university alumni portal",
+      "summary": "Prepare the domain, invitations and acceptance checks for a university alumni portal.",
+      "sections": [
+        [
+          "Set the scope of the first release",
+          "Define the institution name, logo and domain for the portal. Choose one task for alumni to complete in the first release, such as accepting an invitation and updating a profile. Verify that invitations and support communications use the same institutional identity."
+        ],
+        [
+          "Rehearse invitations with sample accounts",
+          "Have a test alumnus open an invitation, verify the account and update a profile on a phone. Provide a clear recovery path for an invalid or expired link. Assign ownership of support requests before launch."
+        ],
+        [
+          "Roll out to one small group",
+          "Send the first invitations to a single alumni cohort. Monitor completed sign-ups, invalid addresses and support requests. Fix the step where the first cohort encountered the most difficulty before inviting the next group."
+        ]
+      ]
+    }
+  },
+  "crm": {
+    "tr": {
+      "slug": "mezun-crm-entegrasyonu-alan-eslestirme",
+      "title": "Mezun CRM entegrasyonunda alan eşleştirme nasıl yapılır?",
+      "summary": "Mezun portalı ile CRM arasında aktarım, kayıt eşleştirme ve hata takibi planı.",
+      "sections": [
+        [
+          "Hangi sistemin hangi alanı yönettiğini belirleyin",
+          "Öğrenci bilgi sistemi mezuniyet kaydını, CRM iletişim geçmişini, portal ise mezunun düzenleyebildiği profil alanlarını yönetebilir. Her alan için kaynağı, aktarım yönünü ve boş değer geldiğinde uygulanacak kuralı bir tabloda belirtin."
+        ],
+        [
+          "E-posta değişse de kaydı doğru eşleştirin",
+          "Kurumun kararlı bir mezun kimliği varsa eşleştirmede onu kullanın. Eski e-postalar ve birden çok programı olan mezunlar için örnek kayıtlarla test yapın. Belirsiz eşleşmeleri otomatik birleştirmeden önce incelemeye ayırın."
+        ],
+        [
+          "Hatalı satırları ayrı izleyin",
+          "Deneme aktarımında gelen, işlenen ve reddedilen satır sayılarını karşılaştırın. Hata düzeltilip aynı dosya yeniden işlendiğinde kopya kayıt oluşmadığını doğrulayın. Canlı geçişten önce bir örnek profili iki sistemde karşılaştırın."
+        ]
+      ]
+    },
+    "en": {
+      "slug": "alumni-crm-integration-field-mapping",
+      "title": "How to map fields for an alumni CRM integration",
+      "summary": "Plan field ownership, record matching and error handling between an alumni portal and a CRM.",
+      "sections": [
+        [
+          "Decide which system owns each field",
+          "A student information system may own graduation records, the CRM communication history, and the portal editable profile information. Document the source, sync direction and treatment of blank values for every field."
+        ],
+        [
+          "Keep matching records when email addresses change",
+          "Use a stable institutional alumni ID if available. Test with old addresses and alumni who completed more than one programme. Send ambiguous matches for review before merging records."
+        ],
+        [
+          "Track rejected rows separately",
+          "In a trial import, compare received, processed and rejected row counts. Fix an invalid row and replay the file to confirm it does not create duplicates. Compare a sample profile in both systems before go-live."
+        ]
+      ]
+    }
   }
 }

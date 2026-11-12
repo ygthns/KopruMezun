@@ -5,9 +5,15 @@ const pairs = JSON.parse(await readFile(new URL('../src/new-guides.json', import
 const escape = value => String(value).replace(/[&<>"']/g, character =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
 const route = (article, lang) => `${lang === 'en' ? '/en' : ''}/rehber/${article.slug}/`;
-const refs = {
-  records: '/rehber/universiteler-icin-mezun-iliskileri-platformu/',
-  career: '/rehber/universiteler-icin-mezun-iliskileri-platformu/',
+const universityGuide = '/rehber/universiteler-icin-mezun-iliskileri-platformu/';
+const related = {
+  records: 'career',
+  career: 'matching',
+  matching: 'career',
+  events: 'groups',
+  groups: 'events',
+  launch: 'crm',
+  crm: 'records',
 };
 
 export async function writeNewGuides(template, origin) {
@@ -29,8 +35,9 @@ export async function writeNewGuides(template, origin) {
       const sections = article.sections.map(([heading, paragraph]) =>
         `<section><h2>${escape(heading)}</h2><p>${escape(paragraph)}</p></section>`).join('');
       const nav = `<nav aria-label="${en ? 'Guide navigation' : 'Rehber navigasyonu'}"><a href="/rehber/">Köprü Rehber</a> · <a href="${alternate}" hreflang="${en ? 'tr' : 'en'}">${en ? 'Türkçe' : 'English'}</a></nav>`;
-      const cross = route(pairs[topic === 'records' ? 'career' : 'records'][lang], lang);
-      const body = `<main id="guide-main"><header class="guide-article-hero"><div class="container">${nav}<h1>${title}</h1><p class="guide-article-deck">${summary}</p></div></header><article class="container guide-article-body">${sections}<section><h2>${en ? 'Related guides' : 'İlgili rehberler'}</h2><ul><li><a href="${refs[topic]}" hreflang="tr">${en ? 'University alumni relations platform guide (Turkish)' : 'Üniversiteler için mezun ilişkileri platformu'}</a></li><li><a href="${cross}">${escape(pairs[topic === 'records' ? 'career' : 'records'][lang].title)}</a></li></ul><p><a href="/#contact">${en ? 'Discuss your pilot with KöprüMezun' : 'Pilotunuzu KöprüMezun ile görüşün'}</a></p></section></article></main>`;
+      const relatedArticle = pairs[related[topic]][lang];
+      const cross = route(relatedArticle, lang);
+      const body = `<main id="guide-main"><header class="guide-article-hero"><div class="container">${nav}<h1>${title}</h1><p class="guide-article-deck">${summary}</p></div></header><article class="container guide-article-body">${sections}<section><h2>${en ? 'Related guides' : 'İlgili rehberler'}</h2><ul><li><a href="${universityGuide}" hreflang="tr">${en ? 'University alumni relations platform guide (Turkish)' : 'Üniversiteler için mezun ilişkileri platformu'}</a></li><li><a href="${cross}">${escape(relatedArticle.title)}</a></li></ul><p><a href="/#contact">${en ? 'Discuss your pilot with KöprüMezun' : 'Pilotunuzu KöprüMezun ile görüşün'}</a></p></section></article></main>`;
       let page = template.replace(/<html lang="[^"]+"/, `<html lang="${lang}"`)
         .replace(/<title>[\s\S]*?<\/title>/, `<title>${title} | KöprüMezun</title>`)
         .replace(/<script type="module"[^>]*><\/script>/g, '')

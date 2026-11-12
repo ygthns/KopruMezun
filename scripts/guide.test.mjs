@@ -61,12 +61,26 @@ test('home and guide index expose crawlable editorial entry points without JavaS
   for (const id of ['product', 'solutions', 'modules', 'security', 'pricing', 'faq', 'privacy']) assert(home.includes(`id="${id}"`));
   assert(home.includes('brochure.pdf'));
 });
-test('sitemap includes existing pages and four new localized guides, excludes 404 and portal addresses', async () => {
+test('sitemap includes existing pages and all localized guides, excludes 404 and portal addresses', async () => {
   const xml = await read('dist/sitemap.xml');
   const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  assert.equal(urls.length, 16); assert.equal(new Set(urls).size, 16);
+  assert.equal(urls.length, 26); assert.equal(new Set(urls).size, 26);
   assert(!urls.some((url) => new URL(url).hostname !== 'koprumezun.com' || /\/404|\/login|\/admin/.test(new URL(url).pathname)));
   for (const a of articles) assert(urls.includes(`${origin}/rehber/${a.slug}/`));
+  const pairs = JSON.parse(await read('src/new-guides.json'));
+  for (const { tr, en } of Object.values(pairs)) {
+    const paths = { tr: `/rehber/${tr.slug}/`, en: `/en/rehber/${en.slug}/` };
+    for (const lang of ['tr', 'en']) {
+      const path = paths[lang];
+      const html = await read(`dist${path}index.html`);
+      assert(urls.includes(origin + path));
+      assert(html.includes(`<html lang="${lang}"`));
+      assert(html.includes(`rel="canonical" href="${origin + path}"`));
+      for (const [alternate, alternatePath] of Object.entries(paths)) {
+        assert(html.includes(`hreflang="${alternate}" href="${origin + alternatePath}"`));
+      }
+    }
+  }
 });
 test('unknown pages use a genuine noindex 404 while existing form delivery stays intact', async () => {
   const config = await read('netlify.toml'), html = await read('dist/404.html');
