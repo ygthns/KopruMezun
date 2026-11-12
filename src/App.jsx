@@ -25,6 +25,7 @@ function App() {
   const [language, setLanguage] = useState(() => { try { return typeof localStorage !== 'undefined' && localStorage.getItem('koprumezun-language') === 'en' ? 'en' : 'tr'; } catch { return 'tr'; } });
   const [menuOpen, setMenuOpen] = useState(false);
   const t = copy[language];
+  const brochureUrl = language === 'tr' ? '/kopru-mezun-katalog-tr.pdf' : '/brochure.pdf';
 
   useEffect(() => {
     try { localStorage.setItem('koprumezun-language', language); } catch { /* Language still works when storage is unavailable. */ }
@@ -181,7 +182,7 @@ function App() {
         </section>
 
         <section id="contact" className="cta-section">
-          <div className="container cta-inner"><div><p className="eyebrow eyebrow-light">{t.nav.cta}</p><h2>{language === 'tr' ? 'Kurumunuzun mezun deneyimini birlikte tasarlayalım.' : 'Let’s design your institution’s alumni experience together.'}</h2></div><div><button type="button" className="button button-accent" onClick={openDemo}>{t.pricing.cta}<ArrowRight size={18} aria-hidden="true" /></button><a className="text-link" href="/brochure.pdf" download><Download size={18} aria-hidden="true" />{t.footer.brochure}</a></div></div>
+          <div className="container cta-inner"><div><p className="eyebrow eyebrow-light">{t.nav.cta}</p><h2>{language === 'tr' ? 'Kurumunuzun mezun deneyimini birlikte tasarlayalım.' : 'Let’s design your institution’s alumni experience together.'}</h2></div><div><button type="button" className="button button-accent" onClick={openDemo}>{t.pricing.cta}<ArrowRight size={18} aria-hidden="true" /></button><a className="text-link" href={brochureUrl} download><Download size={18} aria-hidden="true" />{t.footer.brochure}</a></div></div>
         </section>
 
         <GuideTeaser language={language} />
@@ -217,7 +218,7 @@ function App() {
         </section>
       </main>
 
-      <footer className="site-footer"><div className="container footer-grid"><div><a className="brand footer-brand" href="#top" aria-label="KöprüMezun"><span className="brand-mark" aria-hidden="true"><img src="/logos/kopruyazisizbeyazlogo.svg" alt="" /></span><span className="brand-name"><span>Köprü</span><strong>Mezun</strong></span></a><p>{t.footer.summary}</p></div><div><h3>{t.footer.product}</h3><a href="#modules">{t.nav.modules}</a><a href="#security">{t.nav.security}</a><a href="#pricing">{t.nav.pricing}</a></div><div><h3>{t.footer.company}</h3><a href="/brochure.pdf" download>{t.footer.brochure}</a><a href="/rehber/">Köprü Rehber</a><a href="#privacy">{t.footer.privacy}</a><a href="mailto:info@koprumezun.com">info@koprumezun.com</a></div></div><div className="container footer-bottom">© {new Date().getFullYear()} {t.footer.copyright}<span>koprumezun.com</span></div></footer>
+      <footer className="site-footer"><div className="container footer-grid"><div><a className="brand footer-brand" href="#top" aria-label="KöprüMezun"><span className="brand-mark" aria-hidden="true"><img src="/logos/kopruyazisizbeyazlogo.svg" alt="" /></span><span className="brand-name"><span>Köprü</span><strong>Mezun</strong></span></a><p>{t.footer.summary}</p></div><div><h3>{t.footer.product}</h3><a href="#modules">{t.nav.modules}</a><a href="#security">{t.nav.security}</a><a href="#pricing">{t.nav.pricing}</a></div><div><h3>{t.footer.company}</h3><a href={brochureUrl} download>{t.footer.brochure}</a><a href="/rehber/">Köprü Rehber</a><a href="#privacy">{t.footer.privacy}</a><a href="mailto:info@koprumezun.com">info@koprumezun.com</a></div></div><div className="container footer-bottom">© {new Date().getFullYear()} {t.footer.copyright}<span>koprumezun.com</span></div></footer>
     </div>
   );
 }

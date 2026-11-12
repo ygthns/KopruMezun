@@ -59,7 +59,7 @@ test('home and guide index expose crawlable editorial entry points without JavaS
   assert(home.includes('href="/rehber/"')); assert(home.includes('id="contact"'));
   for (const a of articles) assert(index.includes(`href="/rehber/${a.slug}/"`));
   for (const id of ['product', 'solutions', 'modules', 'security', 'pricing', 'faq', 'privacy']) assert(home.includes(`id="${id}"`));
-  assert(home.includes('brochure.pdf'));
+  assert(home.includes('href="/kopru-mezun-katalog-tr.pdf"'));
 });
 test('sitemap includes existing pages and all localized guides, excludes 404 and portal addresses', async () => {
   const xml = await read('dist/sitemap.xml');
