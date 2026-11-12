@@ -1,0 +1,82 @@
+{
+  "records": {
+    "tr": {
+      "slug": "mezun-bilgi-sistemi-veri-guncelleme-pilotu",
+      "title": "Mezun bilgi sisteminde iletişim verilerini güncelleme pilotu",
+      "summary": "Mezun kayıtlarını düzenli güncellemek için veri sahipliği, profil doğrulama ve iletişim tercihlerini bir pilotta sınayın.",
+      "sections": [
+        [
+          "Önce tek bir mezun grubunu seçin",
+          "Bir bölüm veya mezuniyet yılıyla başlayın. Mevcut mezun bilgi sistemindeki ad, program ve iletişim bilgilerini hangi kaynağın yönettiğini kaydedin. Aynı kişinin iki kaydı varsa hangi alanların kurum tarafından doğrulanacağını ve hangi alanları üyenin güncelleyebileceğini belirleyin."
+        ],
+        [
+          "Profil güncelleme ve iletişim tercihlerini ayrı ele alın",
+          "E-posta güncellemesi ile etkinlik veya bülten tercihi farklı işlemlerdir. Portalda üyeye neyi güncellediğini açıkça gösterin. Kurumunuzun veri koruma sorumlularıyla hangi değişikliklerin kayda geçeceğini, kimlerin inceleyebileceğini ve eski bilgilerin nasıl ele alınacağını netleştirin."
+        ],
+        [
+          "Pilotun başarısını iş akışı üzerinden ölçün",
+          "Davet teslimi, doğrulanmış profil güncellemesi ve geri dönen e-postaları ayrı sayın. Demo sırasında bir mezunun eski adresi güncellediği ve kurumun kayıt geçmişini görebildiği bir senaryo isteyin. Tamamlanan kayıt sayısını gönderilen davetlerle birlikte okuyun."
+        ]
+      ]
+    },
+    "en": {
+      "slug": "alumni-records-contact-data-update-pilot",
+      "title": "How to pilot contact data updates in an alumni information system",
+      "summary": "Test data ownership, profile verification and communication preferences with a small alumni cohort.",
+      "sections": [
+        [
+          "Start with one alumni cohort",
+          "Choose a department or graduation year. Record the source of truth for names, programmes and contact details in the alumni information system. If one person has duplicate records, specify which fields the institution will verify and which the member can update."
+        ],
+        [
+          "Treat profile edits and communication preferences as separate actions",
+          "Updating an email address and setting event or newsletter preferences are different actions. Make it clear what the member is changing. Work with your data protection team to decide what changes are logged, who can review them and how previous values are handled."
+        ],
+        [
+          "Evaluate the pilot through completed workflows",
+          "Track delivered invitations, verified profile updates and bounced emails separately. During a demo, ask to see an alumnus change an old address and an administrator review the record history. Interpret completed updates alongside the number of invitations sent."
+        ]
+      ]
+    }
+  },
+  "career": {
+    "tr": {
+      "slug": "kariyer-merkezi-mezun-agi-is-firsatlari-pilotu",
+      "title": "Kariyer merkezi için mezun ağı ve iş fırsatları pilotu",
+      "summary": "Mezun ağı, iş ilanları ve öğrenci-mezun bağlantılarını bir kariyer merkezi pilotunda birlikte değerlendirin.",
+      "sections": [
+        [
+          "Öğrenci için tek bir kullanım senaryosu seçin",
+          "Üniversite kariyer merkezi için bir öğrencinin ilanı bulduğu, uygunluk koşullarını okuduğu ve mezundan kariyer görüşmesi isteyebildiği bir senaryo tanımlayın. Başvuru ve mentorluk talebinin farklı adımlar olduğunu ekranda görünür kılın."
+        ],
+        [
+          "İlan onayı ile mezun iletişimini ayrı tasarlayın",
+          "İlanı kimin açacağını, kimin onaylayacağını ve kapanış tarihinden sonra ne olacağını belirleyin. Mezun profilinde iletişim tercihi ve öğrenciye gösterilen alanları gözden geçirin. Bir mentorun tüm talepleri kabul etmesini beklemek yerine kapasite sınırı ve alternatif yönlendirme belirleyin."
+        ],
+        [
+          "Demoda başlangıçtan kapanışa kadar ilerleyin",
+          "Örnek bir ilan açın, öğrenci olarak görüntüleyin ve süre dolduğunda yayından kalktığını kontrol edin. Ayrı bir akışta görüşme talebinin kabul ve kapanış kayıtlarını inceleyin. Görülen ilanlar, tamamlanan görüşmeler ve alınan geribildirim birbirinden farklı göstergelerdir."
+        ]
+      ]
+    },
+    "en": {
+      "slug": "career-centre-alumni-network-jobs-pilot",
+      "title": "An alumni network and jobs pilot for university career centres",
+      "summary": "Test job listings, student-to-alumni connections and career mentoring in a focused university pilot.",
+      "sections": [
+        [
+          "Pick one scenario from the student’s perspective",
+          "Define a scenario in which a student finds an opportunity, reads the eligibility criteria and asks an alumnus for a career conversation. Keep job applications and mentoring requests visibly separate."
+        ],
+        [
+          "Design job moderation and alumni contact independently",
+          "Decide who creates a listing, who approves it and what happens at its closing date. Review contact preferences and the profile fields visible to students. Give mentors a capacity limit and provide an alternative route when they are unavailable."
+        ],
+        [
+          "Walk through the demo from posting to closure",
+          "Create a sample listing, view it as a student and check that it is removed at expiry. In a separate workflow, inspect the acceptance and completion records for a career conversation. Listing views, completed conversations and feedback are distinct measures."
+        ]
+      ]
+    }
+  }
+}

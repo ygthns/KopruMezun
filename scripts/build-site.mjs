@@ -3,6 +3,7 @@ import { readFile, writeFile, mkdir, rm, stat } from 'node:fs/promises';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { articles } from '../src/guide-content.js';
+import { writeNewGuides } from './build-new-guides.mjs';
 const origin = 'https://koprumezun.com';
 const escape = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 const json = (data) => JSON.stringify(data).replace(/</g, '\\u003c');
@@ -34,8 +35,9 @@ try {
     await writeFile(filename, html);
   }
   for (const article of articles) for (const suffix of ['', '-640']) await stat(`dist/rehber-images/${article.slug}${suffix}.webp`);
-  const urls = pages.filter((p) => p !== '/404.html');
-  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map((path) => `<url><loc>${origin + path}</loc>${path.startsWith('/rehber/') ? '<lastmod>2026-11-10</lastmod>' : ''}</url>`).join('')}</urlset>\n`;
+  const newGuides = await writeNewGuides(template, origin);
+  const urls = [...pages.filter((p) => p !== '/404.html'), ...newGuides];
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">${urls.map((path) => `<url><loc>${origin + path}</loc>${newGuides.includes(path) ? '<lastmod>2026-11-12</lastmod>' : path.startsWith('/rehber/') ? '<lastmod>2026-11-10</lastmod>' : ''}</url>`).join('')}</urlset>\n`;
   await writeFile('dist/sitemap.xml', xml);
   await writeFile('dist/routes.json', JSON.stringify({ pages: urls, generated: '2026-11-10' }, null, 2));
   console.log(`Statik yayın: ${urls.length} sayfa, ${articles.length} makale, 20 hedef soru.`);

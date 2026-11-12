@@ -61,10 +61,10 @@ test('home and guide index expose crawlable editorial entry points without JavaS
   for (const id of ['product', 'solutions', 'modules', 'security', 'pricing', 'faq', 'privacy']) assert(home.includes(`id="${id}"`));
   assert(home.includes('brochure.pdf'));
 });
-test('sitemap includes exactly twelve public pages, excludes 404 and portal addresses', async () => {
+test('sitemap includes existing pages and four new localized guides, excludes 404 and portal addresses', async () => {
   const xml = await read('dist/sitemap.xml');
   const urls = [...xml.matchAll(/<loc>([^<]+)<\/loc>/g)].map((m) => m[1]);
-  assert.equal(urls.length, 12); assert.equal(new Set(urls).size, 12);
+  assert.equal(urls.length, 16); assert.equal(new Set(urls).size, 16);
   assert(!urls.some((url) => new URL(url).hostname !== 'koprumezun.com' || /\/404|\/login|\/admin/.test(new URL(url).pathname)));
   for (const a of articles) assert(urls.includes(`${origin}/rehber/${a.slug}/`));
 });
