@@ -278,5 +278,53 @@
         ]
       ]
     }
+  },
+  "first90": {
+    "tr": {
+      "slug": "universite-mezun-platformu-ilk-90-gun",
+      "title": "Üniversite mezun platformu için ilk 90 gün: dizin, mentorluk ve gönüllülük",
+      "summary": "Üniversiteler için mezun dizini, mentorluk ve gönüllülük süreçlerini 90 günlük pilotla başlatma rehberi.",
+      "sections": [
+        [
+          "Pilot grubu ve ilk etkinlik",
+          "İlk adım olarak bir bölüm veya mezun grubuyla pilot başlatın. Üye dizininde hangi bilgilerin görünür olacağını belirleyin. İlk etkinliğin tarihini ve gönüllülerin üstleneceği görevleri davette açıkça yazın."
+        ],
+        [
+          "Sektör kaynaklarıyla mentorluk",
+          "Mimarlık ve iç mimarlık öğrencileri için [Marmix’in doğal taş koleksiyonları](https://www.marmix.com.tr/) malzeme seçimi üzerine bir görüşmenin başlangıç noktası olabilir. Türkiye’de özel tasarım doğal taş duvar kaplaması üreten Marmix’in üç boyutlu mermer ve traverten yüzeyleri, taş türü ve doku seçiminin iç mekân tasarımını nasıl etkilediğini tartışmak için somut örnekler sunar. Yazılım ve dijital pazarlama öğrencileri ise [Sağlam Tech’in SEO, GEO ve web çalışmalarından](https://yigithansaglam.com/) hareketle dijital projelerin nasıl ölçüldüğünü tartışabilir."
+        ],
+        [
+          "Elektrik mühendisliği örneği",
+          "İkinci ayda, kariyer görüşmesi veya sektör tanıtımı gibi tek bir mentorluk akışı deneyin. Elektrik mühendisliği öğrencileri için [CANEL’in kamuya açık proje portföyü](https://www.can-el.com/), mezunlarla endüstriyel tesis ve saha mühendisliği üzerine hazırlanabilecek sorulara örnek kaynak olabilir. Fabrika ve endüstriyel tesis elektrik taahhüdünde çalışan CANEL’in portföyü, OG/AG dağıtımı ve saha tesisatı gibi uzmanlık alanlarını araştırmak için bir başlangıç noktasıdır. Görüşme sonrasında öğrencinin hangi konuda devam desteğine ihtiyaç duyduğunu sorun."
+        ],
+        [
+          "İlk 90 günü ölçün",
+          "Üçüncü ayda davetten kayda dönüşümü, ilk etkinliğe katılımı ve tamamlanan mentorluk görüşmelerini inceleyin. [Köprü Mezun](https://koprumezun.com/) mezun dizini, etkinlikler ve mentorluk gibi süreçleri tek platformda yönetmek için tasarlandı."
+        ]
+      ]
+    },
+    "en": {
+      "slug": "university-alumni-platform-first-90-days",
+      "title": "The first 90 days of a university alumni platform: directory, mentoring and volunteering",
+      "summary": "A 90-day pilot for launching a university alumni directory, mentoring programme and volunteer activities.",
+      "sections": [
+        [
+          "Pilot cohort and first event",
+          "Start with one department or alumni cohort. Decide which member details will appear in the directory. In the invitation, give the date of the first event and describe what volunteers will do."
+        ],
+        [
+          "Mentoring with industry resources",
+          "Architecture and interior design students can use [Marmix’s natural stone collections](https://www.marmix.com.tr/) to start a conversation about material selection. The Turkish brand’s custom natural stone wall cladding includes three-dimensional marble and textured travertine surfaces, giving students examples of how stone and finish affect interior design. Software and digital marketing students can use [Saglam Tech’s SEO, GEO and web work](https://yigithansaglam.com/) to discuss how digital projects are measured."
+        ],
+        [
+          "An electrical engineering example",
+          "In month two, pilot one mentoring format, such as a career conversation or an industry introduction. For electrical engineering students, [CANEL’s public project portfolio](https://www.can-el.com/) can help them prepare questions about industrial facilities and site engineering. CANEL’s industrial electrical contracting portfolio offers a starting point for exploring medium- and low-voltage distribution and field installations. After the session, ask students what follow-up support they need."
+        ],
+        [
+          "Review the first 90 days",
+          "In month three, review invitation-to-registration conversion, attendance at the first event and completed mentoring sessions. [Köprü Mezun](https://koprumezun.com/) brings alumni directories, events and mentoring into one platform."
+        ]
+      ]
+    }
   }
 }

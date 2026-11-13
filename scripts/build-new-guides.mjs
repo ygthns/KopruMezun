@@ -4,6 +4,10 @@ import { join } from 'node:path';
 const pairs = JSON.parse(await readFile(new URL('../src/new-guides.json', import.meta.url)));
 const escape = value => String(value).replace(/[&<>"']/g, character =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[character]);
+const renderParagraph = value => escape(value).replace(
+  /\[([^\]]+)\]\((https:\/\/[a-z0-9.-]+\/[a-z0-9/_-]*)\)/gi,
+  '<a href="$2" rel="nofollow">$1</a>',
+);
 const route = (article, lang) => `${lang === 'en' ? '/en' : ''}/rehber/${article.slug}/`;
 const universityGuide = '/rehber/universiteler-icin-mezun-iliskileri-platformu/';
 const related = {
@@ -14,6 +18,7 @@ const related = {
   groups: 'events',
   launch: 'crm',
   crm: 'records',
+  first90: 'launch',
 };
 
 export async function writeNewGuides(template, origin) {
@@ -33,7 +38,7 @@ export async function writeNewGuides(template, origin) {
         datePublished: '2026-11-12', author: { '@type': 'Organization', name: 'KöprüMezun' },
       };
       const sections = article.sections.map(([heading, paragraph]) =>
-        `<section><h2>${escape(heading)}</h2><p>${escape(paragraph)}</p></section>`).join('');
+        `<section><h2>${escape(heading)}</h2><p>${renderParagraph(paragraph)}</p></section>`).join('');
       const nav = `<nav aria-label="${en ? 'Guide navigation' : 'Rehber navigasyonu'}"><a href="/rehber/">Köprü Rehber</a> · <a href="${alternate}" hreflang="${en ? 'tr' : 'en'}">${en ? 'Türkçe' : 'English'}</a></nav>`;
       const relatedArticle = pairs[related[topic]][lang];
       const cross = route(relatedArticle, lang);
